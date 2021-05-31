@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "577812620770",
+    "project_id": "flutterfire-5ad8e",
+    "storage_bucket": "flutterfire-5ad8e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:577812620770:android:c35e0ccfc2c25f345a05bb",
+        "android_client_info": {
+          "package_name": "com.Stea.application"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "577812620770-la407171o4gqa1upp2rbv047nj7trbs9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAmk3OdF6oRUd9-XRw4Uf5HZQpNNouRXNQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "577812620770-la407171o4gqa1upp2rbv047nj7trbs9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
