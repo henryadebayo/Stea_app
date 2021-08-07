@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:stea/widgets/buton.dart';
+import 'package:stea/widgets/const.dart';
 import 'register.dart';
+
+final registerButtonColour =  Colors.blue[900];
 
 class MyWelcomePage extends StatefulWidget {
   @override
@@ -18,79 +22,53 @@ class _MyWelcomePageState extends State<MyWelcomePage> {
             Container(
               margin: EdgeInsets.only(top: 80.0, bottom: 80.0),
 
-              //alignment: AlignmentGeometryTween(begin),
-              //height: 20.0,
-              //color: Colors.red,/
-
               child: Text("Welcome !",
                   style: TextStyle(
                       color: Colors.blue[900],
                       fontSize: 40.0,
                       fontWeight: FontWeight.bold,
-                      fontFamily: "GoogleSans")),
+                      fontFamily: KfontFamily )),
               decoration: BoxDecoration(),
             ),
             Center(
               child: Container(
                 height: 250.0,
-                // width: 300.0,
-                //child:  Text("Foodie"),
                 decoration: BoxDecoration(
-                  //color: Colors.blue,
+
                   image: DecorationImage(
-                    image: AssetImage("images/stealogo.png"),
-                    // fit: BoxFit.cover,
+                    image: KsteaLogo,
                   ),
-                  // borderRadius: BorderRadius.circular(50.0),
                 ),
               ),
             ),
             SizedBox(
               height: 150.0,
             ),
-            // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-
-            InkWell(
-              onTap: (){Navigator.of(context).push(MaterialPageRoute(builder:(BuildContext context) => RegisterPage())); },
-              borderRadius: BorderRadius.circular(40.0),
-              child:  Container(
-                      height: 60.0,
-                      width: 100.0,
-                      decoration: BoxDecoration(
-                          color: Colors.blue[900],
-                          borderRadius: BorderRadius.circular(10.0)),
-                      child: Center(
-                          child: Text(
-                        "Register",
-                        style: TextStyle(
-                            fontFamily: "GoogleSans", color: Colors.white),
-                      ),
-                      ),
-                    ),
+            welcomeButton(
+              containerWidth: 100.0,
+                containerHeight: 60.0,
+                labelText: "Register",
+                onPressed: (){
+                  Navigator.of(context).push(MaterialPageRoute(builder:(BuildContext context)
+                  => RegisterPage()));
+                }
             ),
-            //   Navigator.of(context).push(MaterialPageRoute(builder:(BuildContext context) => RegisterPage()));
-            //Navigator.of(context).pop();
+            Center(
+                child: Text(
+              "Register",
+              style: TextStyle(
+                  fontFamily: "GoogleSans", color: Colors.white),
+            ),
+            ),
             SizedBox(
-              height: 15.0,
+              height: 10.0,
             ),
 
-            InkWell(
-              onTap: (){},
-              borderRadius: BorderRadius.circular(40.0),
-              child: Container(
-                      height: 60.0,
-                      width: 170.0,
-                      decoration: BoxDecoration(
-                          color: Colors.blue[900],
-                          borderRadius: BorderRadius.circular(12.0)),
-                      child: Center(
-                          child: Text(
-                        "Already a Member",
-                        style: TextStyle(
-                            fontFamily: "GoogleSans", color: Colors.white),
-                      ),
-                      ),
-                    ),
+            welcomeButton(
+              containerHeight: 60.0,
+              containerWidth: 300.0,
+              labelText: "Already a member",
+              onPressed: (){},
             ),
           ],
         ),
@@ -98,3 +76,4 @@ class _MyWelcomePageState extends State<MyWelcomePage> {
     );
   }
 }
+

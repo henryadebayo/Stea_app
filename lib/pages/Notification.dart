@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
+import 'package:stea/widgets/const.dart';
 
-import 'appbar.dart';
 
 class NotificationScreen extends StatefulWidget {
   @override
@@ -16,8 +15,8 @@ class _NotificationScreenState extends State<NotificationScreen> {
       appBar: AppBar(
         //backgroundColor: Color(0xFF0E3498),
         centerTitle: true,
-        backgroundColor: Color(0xFF0E3498),
-        title: Title(color: Colors.blue[900], child: Text("Notification",
+        backgroundColor: KdarkBlueColour,
+        title: Title(color: lightBlueColour, child: Text("Notification",
                 style: TextStyle(fontFamily: " GoogleSans",),),
         ),
       ),

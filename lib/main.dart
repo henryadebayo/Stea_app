@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:stea/widgets/const.dart';
 
 import 'pages/funanimation.dart';
 // ignore: unused_import
@@ -17,7 +18,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Stea app',
       theme: ThemeData(
-
+        fontFamily:KfontFamily,
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),

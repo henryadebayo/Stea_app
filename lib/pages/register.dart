@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:stea/models/registerModel.dart';
+import 'package:stea/pages/home.dart';
 import 'alreadyMember.dart';
-import 'homePage.dart';
+
 
 
 class RegisterPage extends StatefulWidget {
@@ -227,7 +228,7 @@ final mainKey = GlobalKey<ScaffoldState>();
                     onDoubleTap: ()
                     {  Navigator.of(context).pop();
                       Navigator.of(context).push(MaterialPageRoute(
-                          builder: (BuildContext context) => MyHomePage()));},
+                          builder: (BuildContext context) => HomeScreen()));},
                     child: Container(
                       height: 60.0,
                       // width: 20.0,
@@ -277,8 +278,6 @@ final mainKey = GlobalKey<ScaffoldState>();
             ),
           ),
         ),
-
-        /*    */
       ),
     );
   }
@@ -287,7 +286,7 @@ final mainKey = GlobalKey<ScaffoldState>();
       if(form.validate()){
         form.save();
      Navigator.of(context).push(MaterialPageRoute(
-builder: (BuildContext context) => MyHomePage(name:_firstname)));
+builder: (BuildContext context) => HomeScreen(userName:_firstname)));
       }
     }
 }

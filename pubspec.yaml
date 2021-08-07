@@ -21,6 +21,7 @@ environment:
   sdk: ">=2.7.0 <3.0.0"
 
 dependencies:
+  font_awesome_flutter: ^9.1.0
   flutter:
     sdk: flutter
 
@@ -29,8 +30,8 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^0.1.3
   carousel_slider: ^1.3.0
-  firebase_auth: ^0.14.0+5
-  cloud_firestore: ^0.12.9+4
+  firebase_auth: ^1.4.1
+  #cloud_firestore: ^0.12.9+4
   #animated_bottom_navigation_bar: ^0.3.2
 
 dev_dependencies:
@@ -66,7 +67,7 @@ flutter:
   fonts:
       - family: GoogleSans
         fonts:
-         - asset: fonts/GoogleSans-Bold-v1.27.ttf
+         - asset: fonts/GoogleSansDisplay-Regular-v1.27.ttf
            
   #   - family: Trajan Pro
   #     fonts:
