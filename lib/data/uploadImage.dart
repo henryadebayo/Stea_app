@@ -37,11 +37,16 @@ class _UploadImageState extends State<UploadImage> {
         child: Column(
           children:
           [
+            Container(),
+            Center(
+              child: RoundWhiteButton(
+                onTap:(){
 
-            RoundWhiteButton(
-              label: "Select Image",
-              height: 50.0,
-              width:200.0,
+                },
+                label: "Select Image",
+                height: 50.0,
+                width:200.0,
+              ),
             ),
           ]
         ),

@@ -64,7 +64,9 @@ class RoundWhiteButton extends StatelessWidget {
   String label;
   double height;
   double width;
-  RoundWhiteButton({@required this.label, this.height, this.width});
+  Function onTap;
+
+  RoundWhiteButton({@required this.label, this.height, this.width, this.onTap});
   @override
   Widget build(BuildContext context){
 return Container(
