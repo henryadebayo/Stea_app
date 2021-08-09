@@ -1,5 +1,5 @@
-class carouselItems{
+class carouselItemsClass{
   final String imagePath;
-  carouselItems({this.imagePath});
+  carouselItemsClass({this.imagePath});
 }
 

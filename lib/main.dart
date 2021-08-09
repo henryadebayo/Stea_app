@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:stea/data/uploadImage.dart';
 import 'package:stea/widgets/const.dart';
 
 import 'pages/funanimation.dart';
@@ -23,7 +24,8 @@ class MyApp extends StatelessWidget {
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       debugShowCheckedModeBanner: false,
-      home: FunAnimation(),
+      home: UploadImage(),
+      //FunAnimation(),
     );
   }
 }

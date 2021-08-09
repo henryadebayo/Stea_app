@@ -1,5 +1,7 @@
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:stea/models/carouselModel.dart';
 import 'package:stea/models/devotionalModel.dart';
 import 'package:stea/pages/audioLib.dart';
 import 'package:stea/pages/testimonyPage.dart';
@@ -27,7 +29,7 @@ class _HomeScreenState extends State<HomeScreen> {
   void initState(){
   super.initState();
 }
-
+ List <carouselItemsClass> _caroselData = carouselItems as List<carouselItemsClass>;
 
   final String firstName;
   _HomeScreenState({this.firstName});
@@ -73,23 +75,17 @@ class _HomeScreenState extends State<HomeScreen> {
              //scrollDirection: Axis.vertical,
              padding:EdgeInsets.only(left: 10.0, right: 10.0),
             children:[
-
-              Cslider(
-
-                 items:[ carouselItems (image:
-                AssetImage("images/stea2.jpg"),),
-
-                carouselItems(image:
-                AssetImage("images/stea4.jpg"),),
-                carouselItems(
-                  image:
-                  AssetImage("images/stea5.jpg"),
-                ),
-                carouselItems(image:
-                AssetImage("images/stea3.jpg"),),
-                carouselItems(image: KsteaLogo),
-                carouselItems(image: AssetImage("images/stea.jpg")),
-              ],),
+              CarouselSlider(
+                  scrollDirection: Axis.horizontal,
+                  height: 180.0,
+                  enlargeCenterPage: true,
+                  autoPlay: true,
+                  aspectRatio: 16/9,
+                  autoPlayCurve: Curves.fastOutSlowIn,
+                  autoPlayAnimationDuration: Duration(milliseconds:800),
+                  viewportFraction: 0.8,
+                  items:_caroselData.map((carouselItems){
+                  }).toList()),
               SizedBox(height:30.0),
               Text("Quick Access.",style:
               TextStyle(fontFamily:KfontFamily, fontSize:20.0),
@@ -154,3 +150,4 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 }
+
