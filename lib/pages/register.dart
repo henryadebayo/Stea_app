@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:stea/models/registerModel.dart';
 import 'package:stea/pages/home.dart';
+import 'package:stea/widgets/bottomNavigation.dart';
 import 'alreadyMember.dart';
-
-
 
 class RegisterPage extends StatefulWidget {
  
@@ -283,10 +282,11 @@ final mainKey = GlobalKey<ScaffoldState>();
   }
   void onPressed(){
       var form = formKey.currentState;
-      if(form.validate()){
-        form.save();
-     Navigator.of(context).push(MaterialPageRoute(
-builder: (BuildContext context) => HomeScreen(userName:_firstname)));
-      }
+      if(form.validate()) {
+      form.save();
+      Navigator.of(context).push(MaterialPageRoute(
+          builder: (BuildContext context) =>
+              BottomNavigationWidget(userName: _firstname)));
     }
+  }
 }

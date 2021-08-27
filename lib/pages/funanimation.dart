@@ -41,9 +41,6 @@ class _FunAnimationState extends State<FunAnimation>
     final double deviceWidth = MediaQuery.of(context).size.width;
 
     return Scaffold(
-      /* appBar: AppBar(
-        title: Text("Fun Animation"),
-      ), */
       body: Center(
         child: AnimatedBuilder(
           animation: animation,

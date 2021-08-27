@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:stea/data/uploadImage.dart';
 import 'package:stea/pages/home.dart';
+import 'package:stea/widgets/bottomNavigation.dart';
 import 'package:stea/widgets/const.dart';
 
 import 'pages/funanimation.dart';
@@ -20,12 +21,13 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Stea app',
       theme: ThemeData(
-        fontFamily:KfontFamily,
+        fontFamily: KfontFamily,
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       debugShowCheckedModeBanner: false,
-      home: FunAnimation(),
+      home: BottomNavigationWidget(),
+      //FunAnimation(),
       //
     );
   }
