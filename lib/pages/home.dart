@@ -1,19 +1,15 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:stea/models/carouselModel.dart';
-import 'package:stea/models/devotionalModel.dart';
-import 'package:stea/pages/audioLib.dart';
+import 'package:stea/data/carouselData.dart';
 import 'package:stea/pages/testimonyPage.dart';
 import 'package:stea/widgets/bottomNavigation.dart';
 import 'package:stea/widgets/buildAppbarLogo.dart';
-import 'package:stea/widgets/caroselSlider.dart';
 import 'package:stea/widgets/conWidgets.dart';
 import 'package:stea/widgets/const.dart';
 import 'package:stea/widgets/quickAccessContent.dart';
 
 import 'AboutUs.dart';
-import 'devotionals.dart';
 
 class HomeScreen extends StatefulWidget {
 
@@ -29,8 +25,6 @@ class _HomeScreenState extends State<HomeScreen> {
   void initState(){
   super.initState();
 }
- List <carouselItemsClass> _caroselData = carouselItems as List<carouselItemsClass>;
-
   final String firstName;
   _HomeScreenState({this.firstName});
   @override
@@ -75,6 +69,9 @@ class _HomeScreenState extends State<HomeScreen> {
              //scrollDirection: Axis.vertical,
              padding:EdgeInsets.only(left: 10.0, right: 10.0),
             children:[
+            //  ...List.generate(carouselItems.length, (index) => null)
+
+               // carouselItems.map((e) => CarouselSlider(items:[e],)).toList(),
               CarouselSlider(
                   scrollDirection: Axis.horizontal,
                   height: 180.0,
@@ -84,8 +81,10 @@ class _HomeScreenState extends State<HomeScreen> {
                   autoPlayCurve: Curves.fastOutSlowIn,
                   autoPlayAnimationDuration: Duration(milliseconds:800),
                   viewportFraction: 0.8,
-                  items:_caroselData.map((carouselItems){
-                  }).toList()),
+                  items: CarouselData.carouselItems
+              ),
+
+
               SizedBox(height:30.0),
               Text("Quick Access.",style:
               TextStyle(fontFamily:KfontFamily, fontSize:20.0),

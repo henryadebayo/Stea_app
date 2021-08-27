@@ -31,7 +31,7 @@ class DevotionalItem extends StatelessWidget {
                   image: AssetImage("images/BAM3232.jpg"),
                 ),
               ),
-            )
+              ),
             ),
           ],
         ),
