@@ -56,32 +56,3 @@ class _BottomNavigationWidgetState extends State<BottomNavigationWidget> {
     );
   }
 }
-
-// BottomNavigationBar(
-// //    currentIndex: 0,
-// //     onTap: (Index){ setState(() {
-// //       currentTabIndex;
-// // //pages[currentTabIndex] = currentIndex;
-// //     });
-// //     },
-// selectedLabelStyle: TextStyle(fontWeight: FontWeight.bold),
-// unselectedLabelStyle: TextStyle(fontWeight: FontWeight.bold),
-// selectedItemColor: KdarkBlueColour,
-// items: [
-// BottomNavigationBarItem(
-// icon: Icon(Icons.home),
-// title: Text('Home'),
-//
-// ),
-// BottomNavigationBarItem(
-// icon: Icon(Icons.my_library_books),
-// title: Text('Devotionals'),
-//
-// ),
-// BottomNavigationBarItem(
-// icon: Icon(Icons.multitrack_audio_sharp),
-// title: Text('Sermons'),
-//
-// ),
-// ],
-// ),

@@ -77,7 +77,10 @@ child: RaisedButton(
 elevation: 0.0,
 shape: RoundedRectangleBorder(
 borderRadius: BorderRadius.circular(18.0),
-side: BorderSide(color:KdarkBlueColour)),
+side: BorderSide(
+    color: KdarkBlueColour
+),
+),
 onPressed:onTap,
 padding: EdgeInsets.all(10.0),
 color: Colors.white,

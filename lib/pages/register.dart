@@ -8,7 +8,7 @@ class RegisterPage extends StatefulWidget {
  
 
   @override
-  _RegisterPageState createState() => _RegisterPageState(model: RegisterModel);
+  _RegisterPageState createState() => _RegisterPageState();
 }
 
 class _RegisterPageState extends State<RegisterPage> {
@@ -17,8 +17,7 @@ class _RegisterPageState extends State<RegisterPage> {
   String _emailAddress;
   String _phoneNumber;
   String _address;
-    var model = RegisterModel;
-  _RegisterPageState({@required this.model});
+
 final formKey = GlobalKey<FormState>();
 final mainKey = GlobalKey<ScaffoldState>();
 
@@ -138,9 +137,7 @@ final mainKey = GlobalKey<ScaffoldState>();
           },
           validator: (String phoneNumber) {
             if (phoneNumber.isEmpty) {
-              String errorMessage;
-              errorMessage = "please fill in your last name";
-              return errorMessage;
+              return "please fill in your last name";
             }
           }),
     );
