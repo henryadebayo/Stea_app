@@ -115,11 +115,15 @@ void onPressed(){
     var form = formkey.currentState;
     if(form.validate()){
       form.save();
-        Navigator.of(context).push(MaterialPageRoute(
-            builder: (BuildContext context) =>
-                TestimonyPage(
+        Navigator.of(context).pop();
 
-                )));
+        SnackBar(
+          backgroundColor: KdarkBlueColour,
+          content: Text("Testimony upload successful"),
+          duration: Duration(
+            seconds: 2
+          ),
+        );
     }
   }
 }
