@@ -1,63 +1,33 @@
 {
   "project_info": {
-    "project_number": "487029456835",
-    "firebase_url": "https://stea-8ba3f-default-rtdb.firebaseio.com",
-    "project_id": "stea-8ba3f",
-    "storage_bucket": "stea-8ba3f.appspot.com"
+    "project_number": "1072058207218",
+    "project_id": "stea-880c0",
+    "storage_bucket": "stea-880c0.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:487029456835:android:f35015ae86fcab05b0c776",
+        "mobilesdk_app_id": "1:1072058207218:android:86a803254d079ac469796b",
         "android_client_info": {
-          "package_name": "com.Stea.application"
+          "package_name": "com.marveltech.stea"
         }
       },
       "oauth_client": [
         {
-          "client_id": "487029456835-brev56k06imsg8q1hd3c0dk04mjaocd0.apps.googleusercontent.com",
+          "client_id": "1072058207218-4ehnlkfuls5mfpteputndq3bjjs85ket.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyAayJek7YRg2gHTRmgAmpjPeGe5jGxIgBw"
+          "current_key": "AIzaSyCP2kgtq9Td0ow3lvGlyDfoOf9v2WhUcQw"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "487029456835-brev56k06imsg8q1hd3c0dk04mjaocd0.apps.googleusercontent.com",
-              "client_type": 3
-            }
-          ]
-        }
-      }
-    },
-    {
-      "client_info": {
-        "mobilesdk_app_id": "1:487029456835:android:f778b99e1b6e9a6db0c776",
-        "android_client_info": {
-          "package_name": "com.marvel.stea"
-        }
-      },
-      "oauth_client": [
-        {
-          "client_id": "487029456835-brev56k06imsg8q1hd3c0dk04mjaocd0.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
-      "api_key": [
-        {
-          "current_key": "AIzaSyAayJek7YRg2gHTRmgAmpjPeGe5jGxIgBw"
-        }
-      ],
-      "services": {
-        "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "487029456835-brev56k06imsg8q1hd3c0dk04mjaocd0.apps.googleusercontent.com",
+              "client_id": "1072058207218-4ehnlkfuls5mfpteputndq3bjjs85ket.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

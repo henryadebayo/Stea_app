@@ -6,6 +6,7 @@ import 'package:stea/pages/testimonyPage.dart';
 import 'package:stea/widgets/bottomNavigation.dart';
 import 'package:stea/widgets/buildAppbarLogo.dart';
 import 'package:stea/widgets/conWidgets.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:stea/widgets/const.dart';
 import 'package:stea/widgets/quickAccessContent.dart';
 
@@ -37,11 +38,11 @@ class _HomeScreenState extends State<HomeScreen> {
         title: Text(
           "STEA",
           style: TextStyle(fontFamily: KfontFamily, letterSpacing: 18.0, fontWeight: FontWeight.bold
-          ,fontSize: 25.0),
+          ,fontSize: 25.0.sp),
         ),
         actions: <Widget>[
           buildShoppingCart(),
-          SizedBox(width: 20.0),
+          SizedBox(width: 20.0.w),
         ],
       ),
      body:SingleChildScrollView(
@@ -50,7 +51,7 @@ class _HomeScreenState extends State<HomeScreen> {
          crossAxisAlignment: CrossAxisAlignment.start,
          children: [
            Padding(
-             padding: const EdgeInsets.all(8.0),
+             padding: const EdgeInsets.symmetric(horizontal:8, vertical: 8),
              child:Column(children:[
                Text("Hi $firstName",
                style: TextStyle(fontFamily: KfontFamily,
@@ -58,12 +59,11 @@ class _HomeScreenState extends State<HomeScreen> {
              ),
            Text(
              "Welcome",
-             style: TextStyle(fontSize: 20.0),
+             style: TextStyle(fontSize: 20.0.sp),
            ),
              ]),
      ),
-        SizedBox(height: 8.0),
-
+        SizedBox(height: 8.0.h),
            ListView(
              shrinkWrap: true,
              //scrollDirection: Axis.vertical,
@@ -74,7 +74,7 @@ class _HomeScreenState extends State<HomeScreen> {
                // carouselItems.map((e) => CarouselSlider(items:[e],)).toList(),
               CarouselSlider(
                   scrollDirection: Axis.horizontal,
-                  height: 180.0,
+                  height: 180.0.h,
                   enlargeCenterPage: true,
                   autoPlay: true,
                   aspectRatio: 16/9,
@@ -85,13 +85,13 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
 
 
-              SizedBox(height:30.0),
+              SizedBox(height:30.0.h),
               Text("Quick Access.",style:
-              TextStyle(fontFamily:KfontFamily, fontSize:20.0),
+              TextStyle(fontFamily:KfontFamily, fontSize:20.0.sp),
               ),
-              SizedBox(height: 10.0,),
+              SizedBox(height: 10.0.h,),
               quickAccessIcon(),
-              SizedBox(height:30.0),
+              SizedBox(height:30.0.h),
               Expanded(child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
@@ -100,38 +100,38 @@ class _HomeScreenState extends State<HomeScreen> {
                       Navigator.of(context).push(MaterialPageRoute(builder: (BuildContext context) => AboutUs()));
                     },
                     child: Container(
-                      height: 170.0,
-                      width:double.infinity,
+                      height: 170.0.h,
+                      width:double.infinity.w,
                       decoration: BoxDecoration(
                         image:DecorationImage(
                           image: AssetImage("images/icon2.png"),
                           fit: BoxFit.cover,
                         ),
-                        borderRadius: BorderRadius.circular(10.0),),
+                        borderRadius: BorderRadius.circular(10.0.r),),
                       child: Center( child:
                       Text("sermons",style: TextStyle(color:Colors.white,
-                        fontSize: 20.0,),)
+                        fontSize: 20.0.sp,),)
                       ),
                     ),
                   ),
                   ),
-                  SizedBox(width:10.0),
+                  SizedBox(width:10.0.w),
                   Expanded(child: GestureDetector(
                     onTap: (){Navigator.of(context).push(MaterialPageRoute(builder: (BuildContext context) => TestimonyPage()));
                     },
                     child: Container(
-                      height: 170.0,
-                      width:double.infinity,
+                      height: 170.0.h,
+                      width:double.infinity.w,
                       decoration: BoxDecoration(
                           image:DecorationImage(
                             image: AssetImage("images/icon1.png"),
                             fit: BoxFit.cover,),
                           color: Color(0xFF0E3498),
-                          borderRadius: BorderRadius.circular(10.0)
+                          borderRadius: BorderRadius.circular(10.0.r)
                       ),
                       child: Center( child:
                       Text("Prayers",style: TextStyle(color:Colors.white,
-                          fontSize: 20.0, fontFamily: "GoogleSans"),)
+                          fontSize: 20.0.sp, fontFamily: "GoogleSans"),)
                       ),
                     ),
                   ),
@@ -139,7 +139,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 ],
               ),
               ),
-              SizedBox(height:30.0),
+              SizedBox(height:30.0.h),
              ],
            ),
          ],

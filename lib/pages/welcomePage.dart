@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:stea/widgets/buton.dart';
 import 'package:stea/widgets/const.dart';
 import 'register.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 final registerButtonColour =  Colors.blue[900];
 
@@ -25,14 +26,14 @@ class _MyWelcomePageState extends State<MyWelcomePage> {
               child: Text("Welcome !",
                   style: TextStyle(
                       color: Colors.blue[900],
-                      fontSize: 40.0,
+                      fontSize: 40.0.sp,
                       fontWeight: FontWeight.bold,
                       fontFamily: KfontFamily )),
               decoration: BoxDecoration(),
             ),
             Center(
               child: Container(
-                height: 250.0,
+                height: 250.0.h,
                 decoration: BoxDecoration(
 
                   image: DecorationImage(
@@ -42,11 +43,11 @@ class _MyWelcomePageState extends State<MyWelcomePage> {
               ),
             ),
             SizedBox(
-              height: 150.0,
+              height: 150.0.h,
             ),
             welcomeButton(
-              containerWidth: 100.0,
-                containerHeight: 60.0,
+              containerWidth: 100.0.w,
+                containerHeight: 60.0.h,
                 labelText: "Register",
                 onPressed: (){
                   Navigator.of(context).push(MaterialPageRoute(builder:(BuildContext context)
@@ -61,12 +62,12 @@ class _MyWelcomePageState extends State<MyWelcomePage> {
             ),
             ),
             SizedBox(
-              height: 10.0,
+              height: 10.0.h,
             ),
 
             welcomeButton(
-              containerHeight: 60.0,
-              containerWidth: 300.0,
+              containerHeight: 60.0.h,
+              containerWidth: 300.0.w,
               labelText: "Already a member",
               onPressed: (){},
             ),

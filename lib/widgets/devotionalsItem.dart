@@ -7,34 +7,17 @@ class DevotionalItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        Column(
-          children: [
-            Expanded(child: Container(
-              height: 150.0,
-              width: double.infinity,
-              decoration: BoxDecoration(
-                image:DecorationImage(
-                  image: AssetImage("images/BAM3232.jpg"),
-                ),
-              ),
-            )
+        Padding(
+          padding: const EdgeInsets.symmetric(vertical: 20.0, horizontal: 10.0),
+          child: GridView.count(
+                  crossAxisCount: 2,
+                  crossAxisSpacing: 20.0,
+                    children: [
+
+                    ],
+
             ),
-          ],
-        ),
-        Column(
-          children: [
-            Expanded(child: Container(
-              height: 150.0,
-              width: double.infinity,
-              decoration: BoxDecoration(
-                image:DecorationImage(
-                  image: AssetImage("images/BAM3232.jpg"),
-                ),
-              ),
-              ),
-            ),
-          ],
-        ),
+          ),
       ],
     );
   }

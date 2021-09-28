@@ -1,4 +1,4 @@
-
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter/material.dart';
 import 'package:stea/pages/welcomePage.dart';
 
@@ -14,7 +14,7 @@ class Button extends StatelessWidget {
   Widget build(BuildContext context) {
     return  Container(
                 decoration: BoxDecoration(color: Colors.black12,
-                    borderRadius: BorderRadius.circular(100.0)
+                    borderRadius: BorderRadius.circular(100.0.r)
                 ),
           height: heigth,
           width: width ,
@@ -40,13 +40,13 @@ class welcomeButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: onPressed,
-      borderRadius: BorderRadius.circular(40.0),
+      borderRadius: BorderRadius.circular(40.0.r),
       child: Container(
         height: containerHeight, //60.0,
         width:  containerWidth,//170.0,
         decoration: BoxDecoration(
             color: registerButtonColour,
-            borderRadius: BorderRadius.circular(12.0)),
+            borderRadius: BorderRadius.circular(12.0.r)),
         child: Center(
           child: Text(
             labelText, // "Already a Member",
@@ -76,17 +76,17 @@ width: width,
 child: RaisedButton(
 elevation: 0.0,
 shape: RoundedRectangleBorder(
-borderRadius: BorderRadius.circular(18.0),
+borderRadius: BorderRadius.circular(18.0.r),
 side: BorderSide(
     color: KdarkBlueColour
 ),
 ),
 onPressed:onTap,
-padding: EdgeInsets.all(10.0),
+padding: EdgeInsets.symmetric(horizontal: 10.0.w, vertical: 10.0.h),
 color: Colors.white,
 textColor: KdarkBlueColour,
 child: Text(label,
-style: TextStyle(fontSize: 20.0)),
+style: TextStyle(fontSize: 20.0.sp)),
 ),
 );
 }

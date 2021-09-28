@@ -14,7 +14,10 @@ dependencies:
   firebase_core:
   firebase_storage:
   firebase_analytics:
-  image_picker: 
+  image_picker:
+  permission_handler:
+  flutter_screenutil: ^5.0.0+2
+
 
 
 

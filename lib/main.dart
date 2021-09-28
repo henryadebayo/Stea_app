@@ -1,5 +1,7 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:stea/data/uploadImage.dart';
 import 'package:stea/pages/home.dart';
 import 'package:stea/widgets/bottomNavigation.dart';
@@ -10,7 +12,9 @@ import 'pages/funanimation.dart';
 import 'pages/welcomePage.dart';
 
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(MyApp());
 }
 
@@ -18,17 +22,21 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
-    return MaterialApp(
-      title: 'Stea app',
-      theme: ThemeData(
-        fontFamily: KfontFamily,
-        primarySwatch: Colors.blue,
-        visualDensity: VisualDensity.adaptivePlatformDensity,
-      ),
-      debugShowCheckedModeBanner: false,
-      home: BottomNavigationWidget(),
-      //FunAnimation(),
-      //
+    return ScreenUtilInit(
+      builder:() => MaterialApp(
+        title: 'Stea app',
+        theme: ThemeData(
+          fontFamily: KfontFamily,
+          primarySwatch: Colors.blue,
+          visualDensity: VisualDensity.adaptivePlatformDensity,
+        ),
+        debugShowCheckedModeBanner: false,
+        home: FunAnimation()
+        //UploadImage(),
+        //
+        //FunAnimation(),
+        ),
+          designSize: const Size (360, 640),
     );
   }
 }

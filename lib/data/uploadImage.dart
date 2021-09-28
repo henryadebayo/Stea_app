@@ -1,6 +1,10 @@
+import 'dart:io';
+
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:permission_handler/permission_handler.dart';
 import 'package:stea/widgets/bottomSheetCon.dart';
 import 'package:stea/widgets/buton.dart';
 import 'package:stea/widgets/const.dart';
@@ -13,18 +17,20 @@ class UploadImage extends StatefulWidget {
 }
 
 class _UploadImageState extends State<UploadImage> {
-  // final _imageFile;
-  final picker = ImagePicker();
-  
-  Future pickImage() async {
-    final pickedFile = await picker.getImage(source: ImageSource.camera);
+  File _imageFile;
+  final _picker = ImagePicker();
+
+  Future getImage(bool isCamera) async{
+    File image;
+    if(isCamera){
+      image = (await _picker.pickImage(source: ImageSource.camera)) as File;
+    }else{
+      image = (await _picker.pickImage(source: ImageSource.gallery)) as File;
+    }
+    setState(() {
+      _imageFile = image;
+    });
   }
-
-  //   setState(() {
-  //     _imageFile = File(pickedFile.path);
-  //   });
-  // }
-
 
   @override
   Widget build(BuildContext context) {
@@ -42,22 +48,79 @@ class _UploadImageState extends State<UploadImage> {
          // mainAxisAlignment: Main,
           children:
           [
-            Expanded(
-              child: Padding(
+            Padding(
                 padding: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 10.0),
                 child: Container(
                   decoration: BoxDecoration(
-                    color: Color(0x800E3497),
                     borderRadius: BorderRadius.circular(30.0),
                   ),
+                  //child: Image.file(_imageFile),
                 ),
               ),
-            ),
+
             Center(
               child: RoundWhiteButton(
                 onTap:(){
                   setState(() {
-                    _bottomSheet(context);
+                    showModalBottomSheet(
+                        backgroundColor: Colors.white,
+                        //shape: ShapeBorder:,
+                        elevation: 10.0,
+                        context: context,
+                        builder: (BuildContext context) {
+                          return Wrap(children: <Widget>[
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              // mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                SizedBox(height: 20.0,),
+                                Container(
+                                  alignment: Alignment.center,
+                                  height: 10.0,
+                                  width: 200.0,
+                                  decoration:BoxDecoration(
+                                    borderRadius:BorderRadius.circular(20.0),
+                                    color:KdarkBlueColour,
+                                  ),
+                                ),
+                                SizedBox(height: 50.0,),
+                                Text("Choose Image From",style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20.0, color: KdarkBlueColour),),
+                                Padding(
+                                    padding: const EdgeInsets.symmetric(vertical: 40.0, horizontal: 20.0),
+                                    child: Row(
+                                      children: [
+                                        Expanded(child: GestureDetector(
+                                          onTap: (){
+
+                                          },
+                                          child: GestureDetector(
+                                            onTap: (){
+                                              getImage(true);
+                                            },
+                                            child: bottomSheetCon(
+                                              Name: "Camera",
+                                              IconData: FontAwesomeIcons.camera,
+                                            ),
+                                          ),
+                                        )),
+                                        SizedBox(width: 20.0,),
+                                        Expanded(child:
+                                        GestureDetector(
+                                          onTap: (){
+                                            getImage(false);
+                                          },
+                                          child: bottomSheetCon(
+                                            Name: "Gallery",
+                                            IconData: FontAwesomeIcons.images,
+                                          ),
+                                        )),
+                                      ],
+                                    )),
+                              ],
+                            )
+                          ]);
+                        });
+
                   });
                 },
                 label: "Select Image",
@@ -70,56 +133,4 @@ class _UploadImageState extends State<UploadImage> {
       ),
     );
   }
-}
-Widget _bottomSheet(context) {
-  showModalBottomSheet(
-      backgroundColor: Colors.white,
-      //shape: ShapeBorder:,
-      elevation: 10.0,
-      context: context,
-      builder: (BuildContext context) {
-        return Wrap(children: <Widget>[
-          Column(
-             crossAxisAlignment: CrossAxisAlignment.center,
-            // mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              SizedBox(height: 20.0,),
-              Container(
-                alignment: Alignment.center,
-                height: 10.0,
-                width: 200.0,
-                decoration:BoxDecoration(
-                  borderRadius:BorderRadius.circular(20.0),
-                  color:KdarkBlueColour,
-                ),
-              ),
-              SizedBox(height: 50.0,),
-              Text("Choose Image From",style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20.0, color: KdarkBlueColour),),
-              Padding(
-                padding: const EdgeInsets.symmetric(vertical: 40.0, horizontal: 20.0),
-                child: Row(
-                  children: [
-                    Expanded(child: GestureDetector(
-                      onTap: (){
-                        setState(){
-                        }
-                      },
-                      child: bottomSheetCon(
-                        Name: "Camera",
-                        IconData: FontAwesomeIcons.camera,
-                      ),
-                    )),
-                    SizedBox(width: 20.0,),
-                    Expanded(child: bottomSheetCon(
-                      Name: "Gallery",
-                      IconData: FontAwesomeIcons.images,
-                    )),
-                      ],
-                    )),
-            ],
-          )
-        ]);
-      });
-  
-  
 }

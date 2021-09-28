@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:stea/pages/register.dart';
+import 'package:stea/widgets/bottomNavigation.dart';
 import 'welcomePage.dart';
 
 class FunAnimation extends StatefulWidget {
@@ -26,7 +28,7 @@ class _FunAnimationState extends State<FunAnimation>
               parent: animationController, curve: Curves.fastOutSlowIn))
             ..addStatusListener((status) {
               if (status == AnimationStatus.completed) {
-                Navigator.of(context).push(MaterialPageRoute(builder:(BuildContext context) => MyWelcomePage()));
+                Navigator.of(context).push(MaterialPageRoute(builder:(BuildContext context) => RegisterPage()));
               }
             });
           animationController.forward();

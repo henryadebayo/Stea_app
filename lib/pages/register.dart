@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:stea/models/registerModel.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:stea/pages/home.dart';
 import 'package:stea/widgets/bottomNavigation.dart';
 import 'alreadyMember.dart';
@@ -25,7 +25,7 @@ final mainKey = GlobalKey<ScaffoldState>();
   Widget _buidFIrstNameFormFeild() {
     return Material(
       color:  Color(0xFF0E3E3E3),
-      borderRadius: BorderRadius.circular(04.0),
+      borderRadius: BorderRadius.circular(04.0.r),
       child: TextFormField(
         expands: false,
 
@@ -33,10 +33,10 @@ final mainKey = GlobalKey<ScaffoldState>();
           border: InputBorder.none,
           //TextInoutBorder.none,
           contentPadding:
-           EdgeInsets.symmetric(horizontal: 30.0, vertical: 10.0),
+           EdgeInsets.symmetric(horizontal: 30.0.w, vertical: 10.0.h),
           labelText: "First name",
           hintStyle: TextStyle(
-              color: Colors.black12, fontSize: 14.0, fontFamily: "GoogleSans"),
+              color: Colors.black12, fontSize: 14.0.sp, fontFamily: "GoogleSans"),
         ),
         
         onSaved: (firstName) {
@@ -55,17 +55,17 @@ final mainKey = GlobalKey<ScaffoldState>();
   Widget _buidLastNameFormFeild() {
     return Material(
       color:  Color(0xFF0E3E3E3),
-      borderRadius: BorderRadius.circular(04.0),
+      borderRadius: BorderRadius.circular(04.0.r),
       child: TextFormField(
           decoration: InputDecoration(
             border: InputBorder.none,
             //TextInoutBorder.none,
             contentPadding:
-                EdgeInsets.symmetric(horizontal: 30.0, vertical: 10.0),
+                EdgeInsets.symmetric(horizontal: 30.0.w, vertical: 10.0.h),
             labelText: "Last name",
             hintStyle: TextStyle(
                 color: Colors.black12,
-                fontSize: 14.0,
+                fontSize: 14.0.sp,
                 fontFamily: "GoogleSans"),
           ),
           onSaved: (String lastName) {
@@ -86,17 +86,17 @@ final mainKey = GlobalKey<ScaffoldState>();
   Widget _buidEmailAddressFormFeild() {
     return Material(
       color: Color(0xFF0E3E3E3),
-      borderRadius: BorderRadius.circular(04.0),
+      borderRadius: BorderRadius.circular(04.0.r),
       child: TextFormField(
         autocorrect: false,
         decoration: InputDecoration(
           border: InputBorder.none,
           //TextInoutBorder.none,
           contentPadding:
-              EdgeInsets.symmetric(horizontal: 30.0, vertical: 10.0),
+              EdgeInsets.symmetric(horizontal: 30.0.w, vertical: 10.0.h),
           labelText: "Email address ",
           hintStyle: TextStyle(
-              color: Colors.black12, fontSize: 14.0, fontFamily: "GoogleSans"),
+              color: Colors.black12, fontSize: 14.0.sp, fontFamily: "GoogleSans"),
         ),
         onSaved: (String email) {
           email = _emailAddress;
@@ -116,7 +116,7 @@ final mainKey = GlobalKey<ScaffoldState>();
   Widget _buidPhoneNumberFormFeild() {
     return Material(
       color:  Color(0xFF0E3E3E3),
-      borderRadius: BorderRadius.circular(04.0),
+      borderRadius: BorderRadius.circular(04.0.r),
       child: TextFormField(
 
           /// maxLength: 11,
@@ -125,11 +125,11 @@ final mainKey = GlobalKey<ScaffoldState>();
             border: InputBorder.none,
             //TextInoutBorder.none,
             contentPadding:
-                EdgeInsets.symmetric(horizontal: 30.0, vertical: 10.0),
+                EdgeInsets.symmetric(horizontal: 30.0.w, vertical: 10.0.h),
             labelText: "Phone Number",
             hintStyle: TextStyle(
                 color: Colors.black12,
-                fontSize: 14.0,
+                fontSize: 14.0.sp,
                 fontFamily: "GoogleSans"),
           ),
           onSaved: (String phoneNumber) {
@@ -146,16 +146,16 @@ final mainKey = GlobalKey<ScaffoldState>();
   Widget _buidAddressFormFeild() {
     return Material(
       color:  Color(0xFF0E3E3E3),
-      borderRadius: BorderRadius.circular(04.0),
+      borderRadius: BorderRadius.circular(04.0.r),
       child: TextFormField(
         decoration: InputDecoration(
           border: InputBorder.none,
           //TextInoutBorder.none,
           contentPadding:
-              EdgeInsets.symmetric(horizontal: 30.0, vertical: 10.0),
+              EdgeInsets.symmetric(horizontal: 30.0.w, vertical: 10.0.h),
           labelText: "Address",
           hintStyle: TextStyle(
-              color:Color(0xFF0E3E3E3), fontSize: 14.0, fontFamily: "GoogleSans"),
+              color:Color(0xFF0E3E3E3), fontSize: 14.0.sp, fontFamily: "GoogleSans"),
         ),
         onSaved: (String address) {
           address = _address;
@@ -186,38 +186,38 @@ final mainKey = GlobalKey<ScaffoldState>();
                 Text(
                   "Fill In Your Details ",
                   style: TextStyle(
-                      fontSize: 20.0,
+                      fontSize: 20.0.sp,
                       fontWeight: FontWeight.bold,
                       fontFamily: "GoogleSans",
                       color: Colors.blue[900]),
                 ),
                
-                SizedBox(height: 50.0),
+                SizedBox(height: 50.0.h),
                  Form(
                    key: formKey, 
                    child: Column(
                      children:<Widget>[
                 _buidFIrstNameFormFeild(),
                 SizedBox(
-                  height: 30,
+                  height: 30.h,
                 ),
                 _buidLastNameFormFeild(),
                 SizedBox(
-                  height: 30,
+                  height: 30.h,
                 ),
                 _buidEmailAddressFormFeild(),
                 SizedBox(
-                  height: 30,
+                  height: 30.h,
                 ),
                 _buidPhoneNumberFormFeild(),
                 SizedBox(
-                  height: 30,
+                  height: 30.h,
                 ),
                 _buidAddressFormFeild(),
                 ]),
                 ),
                 SizedBox(
-                  height: 40.0,
+                  height: 40.0.h,
                 ),
                 InkWell(
                     onTap: onPressed,
@@ -226,11 +226,11 @@ final mainKey = GlobalKey<ScaffoldState>();
                       Navigator.of(context).push(MaterialPageRoute(
                           builder: (BuildContext context) => HomeScreen()));},
                     child: Container(
-                      height: 60.0,
+                      height: 60.0.h,
                       // width: 20.0,
                       decoration: BoxDecoration(
                           color: Colors.blue[900],
-                          borderRadius: BorderRadius.circular(04.0)),
+                          borderRadius: BorderRadius.circular(04.0.r)),
                       child: Center(
                           child: Text(
                         "Become a Member",
@@ -239,7 +239,7 @@ final mainKey = GlobalKey<ScaffoldState>();
                       )),
                     )),
                 SizedBox(
-                  height: 30.0,
+                  height: 30.h,
                 ),
                 Row(
                   children: <Widget>[
@@ -252,7 +252,7 @@ final mainKey = GlobalKey<ScaffoldState>();
                       ),
                     ),
                     SizedBox(
-                      width: 5.0,
+                      width: 5.0.w,
                     ),
                     InkWell(
                       onTap: () {
@@ -266,7 +266,7 @@ final mainKey = GlobalKey<ScaffoldState>();
                       ),
                     ),
                      SizedBox(
-                      height: 20.0,
+                      height: 20.h,
                     ),
                   ],
                 )
