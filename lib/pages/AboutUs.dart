@@ -1,4 +1,4 @@
-
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'dart:ui';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
@@ -25,8 +25,8 @@ class AboutUs extends StatelessWidget {
      crossAxisAlignment: CrossAxisAlignment.center,
           children:[
             Container(
-             height:280.0,
-                width:double.infinity,
+             height:280.0.h,
+                width:double.infinity.w,
               decoration:BoxDecoration(
                   image:DecorationImage(
                   image: AssetImage("images/BAM3232.jpg"),
@@ -52,18 +52,18 @@ class AboutUs extends StatelessWidget {
           ),
         ),*/
                   Container(
-                   height: 200.0,
-                    width: 200.0,
+                   height: 200.0.h,
+                    width: 200.0.w,
                     decoration:BoxDecoration(
                       image: DecorationImage( image: AssetImage("images/stealogo.png"),
                       fit:BoxFit.cover,
                       //color: Colors.green,
                     ),
-                      borderRadius: BorderRadius.circular(100.0),
+                      borderRadius: BorderRadius.circular(100.0.r),
 
                   ),
             ),
-                  Text("StrongTower Evangelical Assembly",textAlign:TextAlign.center, style: TextStyle(color:Colors.white, fontSize:20.0,
+                  Text("StrongTower Evangelical Assembly",textAlign:TextAlign.center, style: TextStyle(color:Colors.white, fontSize:20.0.sp,
                       fontWeight:FontWeight.w900,
                     //letterSpacing: 5.0,
                   ),
@@ -73,48 +73,48 @@ class AboutUs extends StatelessWidget {
               ),
 
             ),
-            SizedBox(height:15.0),
+            SizedBox(height:15.0.h),
 
               aboutUsNameH(labelName: "Bishop Ralph Olufemi Olowo",),
 
-            SizedBox(height:5.0),
+            SizedBox(height:5.0.h),
             aboutUsImageContainer(
               imageName: "images/DAD5.jpg",
             ),
             aboutUsInfo(),
-            SizedBox(height: 50.0,),
+            SizedBox(height: 50.0.h,),
             RoundWhiteButton(
               label: "Know More",
-              height: 50.0,
-              width:200.0,
+              height: 50.0.h,
+              width:200.0.w,
             ),
-            SizedBox(height: 50.0,),
+            SizedBox(height: 50.0.h,),
             aboutUsNameH(labelName: "Rev.Lois Ibilola Olowo",),
-            SizedBox(height:5.0),
+            SizedBox(height:5.0.h),
             aboutUsImageContainer(imageName: "images/mum2.jpg"),
             aboutUsInfo(),
-            SizedBox(height: 50.0,),
+            SizedBox(height: 50.0.h,),
             RoundWhiteButton(
               label: "Know More",
-              height: 50.0,
-              width:200.0,
+              height: 50.0.h,
+              width:200.0.w,
             ),
-            SizedBox(height: 50.0,),
+            SizedBox(height: 50.0.h,),
             aboutUsNameH(labelName: "Bishop David Bakare",),
-            SizedBox(height:5.0),
+            SizedBox(height:5.0.h),
             aboutUsImageContainer(imageName: "images/bb.jpg"),
             aboutUsInfo(),
-            SizedBox(height: 50.0,),
+            SizedBox(height: 50.0.h,),
             RoundWhiteButton(
               label: "Know More",
-              height: 50.0,
-              width:200.0,
+              height: 50.0.h,
+              width:200.0.w,
             ),
 
 
           ],
         ),
-          SizedBox(height: 100.0,),
+          SizedBox(height: 100.0.h,),
           Row(
             mainAxisAlignment:MainAxisAlignment.center,
             children: [
@@ -123,19 +123,19 @@ class AboutUs extends StatelessWidget {
                 color:KdarkBlueColour,
                 size: 30.0,
               ),
-              SizedBox(width: 10.0,),
+              SizedBox(width: 10.0.w,),
               Icon(
                 FontAwesomeIcons.facebook,
                 color:KdarkBlueColour,
                 size: 30.0,
               ),
-              SizedBox(width: 10.0,),
+              SizedBox(width: 10.0.w,),
               Icon(
                 FontAwesomeIcons.twitter,
                 color:KdarkBlueColour,
                 size: 30.0,
               ),
-              SizedBox(width: 10.0,),
+              SizedBox(width: 10.0.w,),
               Icon(
                 FontAwesomeIcons.youtube,
                 color:KdarkBlueColour,
@@ -143,11 +143,11 @@ class AboutUs extends StatelessWidget {
               ),
             ],
           ),
-          SizedBox(height: 100.0,),
+          SizedBox(height: 100.0.h,),
 
           RoundWhiteButton(
             label: "About Developer",
-            height: 70.0,
+            height: 70.0.h,
           ),
         ],
       ),

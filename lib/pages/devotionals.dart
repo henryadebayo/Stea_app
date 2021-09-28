@@ -1,3 +1,4 @@
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter/material.dart';
 import 'package:stea/widgets/bottomNavigation.dart';
 import 'package:stea/widgets/const.dart';
@@ -27,7 +28,7 @@ class _DevotionalsState extends State<Devotionals> {
           child: Column(
             children:[
               SearchField(searchTxt: "search for Devotional",),
-              SizedBox(height:20.0),
+              SizedBox(height:20.0.h),
               DevotionalItem(),
           ],),
         ),

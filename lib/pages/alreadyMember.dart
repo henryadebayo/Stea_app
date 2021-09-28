@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 class AlreadyMember extends StatefulWidget {
   @override
   _AlreadyMemberState createState() => _AlreadyMemberState();
@@ -13,17 +14,17 @@ String emailAddress;
   Widget _buidEmailAddressFormFeild() {
     return Material(
       color: Color(0xFF0E3E3E3),
-      borderRadius: BorderRadius.circular(04.0),
+      borderRadius: BorderRadius.circular(04.0.r),
       child: TextFormField(
         autocorrect: false,
         decoration: InputDecoration(
           border: InputBorder.none,
           //TextInoutBorder.none,
           contentPadding:
-              EdgeInsets.symmetric(horizontal: 30.0, vertical: 10.0),
+              EdgeInsets.symmetric(horizontal: 30.0.w, vertical: 10.0.h),
           labelText: "Email address ",
           hintStyle: TextStyle(
-              color: Colors.black12, fontSize: 14.0, fontFamily: "GoogleSans"),
+              color: Colors.black12, fontSize: 14.0.sp, fontFamily: "GoogleSans"),
         ),
         onSaved: (String email) {
           email = emailAddress;
@@ -51,13 +52,13 @@ String emailAddress;
                       children: <Widget>[
                         Text(
                           "Hello",
-                      style: TextStyle(fontFamily: "GoogleSans", fontSize: 30.0,color:Colors.blue[900]),
+                      style: TextStyle(fontFamily: "GoogleSans", fontSize: 30.0.sp,color:Colors.blue[900]),
                     ),
                     Text(
                       "Welcome Back.",
-                      style: TextStyle(fontSize: 30.0,color:Colors.blue[900]),
+                      style: TextStyle(fontSize: 30.0.sp,color:Colors.blue[900]),
                     ),
-                    SizedBox(height: 20.0),
+                    SizedBox(height: 20.0.h),
              Container(
                child:
                _buidEmailAddressFormFeild()
