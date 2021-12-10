@@ -49,17 +49,17 @@ class _HomeScreenState extends State<HomeScreen> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Padding(
-              padding: EdgeInsets.symmetric(horizontal: 0, vertical: 8),
+              padding: EdgeInsets.symmetric(horizontal: 8.w, vertical: 8.h),
               child: Column(children: [
                 Text(
                   "Hi $firstName",
                   style: TextStyle(
                     fontFamily: KfontFamily,
-                    fontSize: 15.0,
+                    fontSize: 15.0.sp,
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 8, vertical: 0),
+                  padding: EdgeInsets.only(left: 8.w),
                   child: Text(
                     "Welcome",
                     style: TextStyle(fontSize: 20.0.sp),
@@ -109,7 +109,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                 builder: (BuildContext context) => AboutUs()));
                           },
                           child: Container(
-                            height: 170.0.h,
+                            height: 150.0.h,
                             width: double.infinity.w,
                             decoration: BoxDecoration(
                               image: DecorationImage(
@@ -138,7 +138,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                     TestimonyPage()));
                           },
                           child: Container(
-                            height: 170.0.h,
+                            height: 150.0.h,
                             width: double.infinity.w,
                             decoration: BoxDecoration(
                                 image: DecorationImage(

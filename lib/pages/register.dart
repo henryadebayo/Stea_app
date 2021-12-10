@@ -42,27 +42,27 @@ class _RegisterPageState extends State<RegisterPage> {
                 Form(
                   key: formKey,
                   child: Column(children: <Widget>[
-                    buidFIrstNameFormFeild(_firstname),
+                    buidFIrstNameFormFeild(name: _firstname),
                     SizedBox(
-                      height: 30.h,
+                      height: 20.h,
                     ),
                     buidLastNameFormFeild(),
                     SizedBox(
-                      height: 30.h,
+                      height: 20.h,
                     ),
                     buidEmailAddressFormFeild(),
                     SizedBox(
-                      height: 30.h,
+                      height: 20.h,
                     ),
                     buidPhoneNumberFormFeild(),
                     SizedBox(
-                      height: 30.h,
+                      height: 20.h,
                     ),
                     buidAddressFormFeild(),
                   ]),
                 ),
                 SizedBox(
-                  height: 40.0.h,
+                  height: 20.0.h,
                 ),
                 InkWell(
                     onTap: onPressed,
@@ -72,7 +72,7 @@ class _RegisterPageState extends State<RegisterPage> {
                           builder: (BuildContext context) => HomeScreen()));
                     },
                     child: Container(
-                      height: 60.0.h,
+                      height: 50.0.h,
                       // width: 20.0,
                       decoration: BoxDecoration(
                           color: Colors.blue[900],
@@ -85,9 +85,10 @@ class _RegisterPageState extends State<RegisterPage> {
                       )),
                     )),
                 SizedBox(
-                  height: 30.h,
+                  height: 10.h,
                 ),
                 Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
                     //SizedBox(width: 10.0,),
                     Center(

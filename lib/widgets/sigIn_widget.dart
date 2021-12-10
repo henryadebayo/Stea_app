@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-String _lastName;
-String _emailAddress;
-String _phoneNumber;
-String _address;
+String lastName;
+String emailAddress;
+String phoneNumber;
+String address;
 
 // ignore: non_constant_identifier_names
-Widget buidFIrstNameFormFeild(String _firstname) {
+Widget buidFIrstNameFormFeild({String name}) {
   return TextFormField(
     decoration: InputDecoration(
       border: OutlineInputBorder(
@@ -25,10 +25,10 @@ Widget buidFIrstNameFormFeild(String _firstname) {
         vertical: 15.h,
       ),
       hintText: "label",
-      hintStyle: TextStyle(fontSize: 16.sp),
+      hintStyle: TextStyle(fontSize: 14.sp),
     ),
-    onChanged: (firstName) {
-      _firstname = firstName;
+    onSaved: (firstName) {
+      name = firstName;
     },
     validator: (String firstName) {
       String errorMessage;
@@ -56,11 +56,11 @@ Widget buidLastNameFormFeild() {
           horizontal: 19.w,
           vertical: 15.h,
         ),
-        hintText: "label",
-        hintStyle: TextStyle(fontSize: 16.sp),
+        hintText: "last name",
+        hintStyle: TextStyle(fontSize: 14.sp),
       ),
-      onSaved: (String lastName) {
-        lastName = _lastName;
+      onSaved: (String lastNamee) {
+        lastNamee = lastName;
       },
       // ignore: missing_return
       validator: (String lastName) {
@@ -83,17 +83,16 @@ Widget buidEmailAddressFormFeild() {
       ),
       enabledBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(4.0.r),
-        //borderSide: BorderSide(color: Colors.black),
       ),
       contentPadding: EdgeInsets.symmetric(
         horizontal: 19.w,
         vertical: 15.h,
       ),
-      hintText: "label",
-      hintStyle: TextStyle(fontSize: 16.sp),
+      hintText: "email address",
+      hintStyle: TextStyle(fontSize: 14.sp),
     ),
     onSaved: (String email) {
-      email = _emailAddress;
+      email = emailAddress;
     },
     validator: (String email) {
       String errorMessage;
@@ -108,6 +107,8 @@ Widget buidEmailAddressFormFeild() {
 
 Widget buidPhoneNumberFormFeild() {
   return TextFormField(
+      maxLength: 13,
+      keyboardType: TextInputType.phone,
       decoration: InputDecoration(
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(8.0.r),
@@ -123,11 +124,11 @@ Widget buidPhoneNumberFormFeild() {
           horizontal: 19.w,
           vertical: 15.h,
         ),
-        hintText: "label",
-        hintStyle: TextStyle(fontSize: 16.sp),
+        hintText: "+234",
+        hintStyle: TextStyle(fontSize: 14.sp),
       ),
-      onSaved: (String phoneNumber) {
-        phoneNumber = _phoneNumber;
+      onSaved: (String phoneNumberr) {
+        phoneNumberr = phoneNumber;
       },
       validator: (String phoneNumber) {
         if (phoneNumber.isEmpty) {
@@ -153,11 +154,11 @@ Widget buidAddressFormFeild() {
         horizontal: 19.w,
         vertical: 15.h,
       ),
-      hintText: "label",
-      hintStyle: TextStyle(fontSize: 16.sp),
+      hintText: "Address",
+      hintStyle: TextStyle(fontSize: 14.sp),
     ),
-    onSaved: (String address) {
-      address = _address;
+    onSaved: (String addresss) {
+      addresss = address;
     },
     validator: (String address) {
       if (address.isEmpty) {
