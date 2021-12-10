@@ -27,7 +27,7 @@ class _TestimonyPageState extends State<TestimonyPage> {
       ),
       body: Stack(children: [
         Padding(
-          padding: EdgeInsets.only(left: 3.0, right: 3.0),
+          padding: EdgeInsets.only(left: 5.0.w, right: 5.0.w, top: 10.0.h),
           child: ListView.builder(
               scrollDirection: Axis.vertical,
               itemCount: tes.length,

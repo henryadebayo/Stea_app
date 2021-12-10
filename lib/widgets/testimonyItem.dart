@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class testimonyItem extends StatelessWidget {
   String testifyerName;
@@ -16,6 +17,8 @@ class testimonyItem extends StatelessWidget {
             image: AssetImage("images/icon1.png"), fit: BoxFit.cover),
       ),
       child: Container(
+        height: 100.h,
+        width: 180.w,
         decoration: BoxDecoration(color: Colors.redAccent),
         child: Column(
           children: [
