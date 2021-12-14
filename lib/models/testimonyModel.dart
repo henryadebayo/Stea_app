@@ -5,7 +5,27 @@ class TestimonyModel {
     this.name,
     this.details,
   });
+  factory TestimonyModel.fromJson(Map<String,dynamic> json)=> TestimonyModel(
+    name: json['name'],
+    details: json['details'],
+  );
+
+  Map<String,dynamic> toJson()=>{
+    'name':name,
+    'details':details,
+  };
 }
+
+
+
+
+
+
+
+
+
+
+
 
 List<TestimonyModel> tes = [
   TestimonyModel(
