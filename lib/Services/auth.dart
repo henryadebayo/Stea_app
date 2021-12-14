@@ -5,8 +5,13 @@ class AuthService {
   //signin anon
   Future signInAnon() async {
     try {
-      AuthResult result = (await _auth.signInAnonymously()) as AuthResult;
-    } catch (e) {}
+      AuthResult result = await _auth.signInAnonymously();
+      FirebaseUser user = result.user;
+      return user;
+    } catch (e) {
+      print(e.toString());
+      return null;
+    }
   }
   //sigmin with e n p
   //signup anon

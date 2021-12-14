@@ -11,9 +11,8 @@ environment:
 
 dependencies:
   font_awesome_flutter: ^9.1.0
-  firebase_core:
   firebase_storage:
-  firebase_analytics:
+  firebase_core: ^1.10.5
   image_picker:
   permission_handler:
   flutter_screenutil: ^5.0.0+2
@@ -27,7 +26,7 @@ dependencies:
 
   cupertino_icons: ^0.1.3
   carousel_slider: ^1.3.0
-  firebase_auth: ^1.4.1
+  firebase_auth: ^3.3.3
   #cloud_firestore: ^0.12.9+4
   #animated_bottom_navigation_bar: ^0.3.2
 
