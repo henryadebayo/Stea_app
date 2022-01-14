@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:stea/models/testimonyModel.dart';
 import 'package:stea/pages/testimonyPage.dart';
 import 'package:stea/widgets/buton.dart';
 import 'package:stea/widgets/const.dart';
@@ -112,11 +113,13 @@ class _AddTestimonyState extends State<AddTestimony> {
 
   }
 void onPressed(){
-    var form = formkey.currentState;
-    if(form.validate()){
-      form.save();
+    if(formkey.currentState.validate()){
+      formkey.currentState.save();
         Navigator.of(context).pop();
-
+        final TestimonyModel testimony = TestimonyModel(
+          name: _name,
+          details: _Testimony,
+        );
         SnackBar(
           backgroundColor: KdarkBlueColour,
           content: Text("Testimony upload successful"),
