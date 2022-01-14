@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:stea/Services/send_receive_testimonies.dart';
 import 'package:stea/models/testimonyModel.dart';
 import 'package:stea/pages/testimonyPage.dart';
 import 'package:stea/widgets/buton.dart';
@@ -56,13 +57,14 @@ class _AddTestimonyState extends State<AddTestimony> {
                               )
                           ),
                           maxLength: 25,
-                          onSaved: (String value){
+                          onSaved: (value){
                             value = _name;
                           },
-                          validator: (String value){
+                          validator: (value){
                             if(value.isEmpty){
                               return "please input your name";
                             }
+                            return null;
                           }
                       ),
 
@@ -85,10 +87,11 @@ class _AddTestimonyState extends State<AddTestimony> {
                           onSaved: (String value){
                             value = _Testimony;
                           },
-                          validator: (String value){
+                          validator: (value){
                             if(value.isEmpty){
                               return "please input your Testimony text";
                             }
+                            return null;
                           }
                       ),
                     ],)
@@ -115,18 +118,21 @@ class _AddTestimonyState extends State<AddTestimony> {
 void onPressed(){
     if(formkey.currentState.validate()){
       formkey.currentState.save();
-        Navigator.of(context).pop();
-        final TestimonyModel testimony = TestimonyModel(
+       // Navigator.of(context).pop();
+         TestimonyModel testimony = TestimonyModel(
           name: _name,
           details: _Testimony,
         );
-        SnackBar(
-          backgroundColor: KdarkBlueColour,
-          content: Text("Testimony upload successful"),
-          duration: Duration(
-            seconds: 2
-          ),
-        );
+        sendTes(testimony);
+        print(testimony.toString());
+
+        // SnackBar(
+        //   backgroundColor: KdarkBlueColour,
+        //   content: Text("Testimony upload successful"),
+        //   duration: Duration(
+        //     seconds: 2
+        //   ),
+        // );
     }
   }
 }

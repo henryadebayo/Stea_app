@@ -1,7 +1,9 @@
 class TestimonyModel {
+  String id;
   String name;
   String details;
   TestimonyModel({
+    this.id,
     this.name,
     this.details,
   });
