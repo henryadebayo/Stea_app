@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:stea/Services/send_receive_testimonies.dart';
 import 'package:stea/models/testimonyModel.dart';
@@ -7,16 +9,17 @@ import 'package:stea/widgets/const.dart';
 import 'package:stea/widgets/customtextform.dart';
 
 class AddTestimony extends StatefulWidget {
-  const AddTestimony({Key key}) : super(key: key);
-
+// final TestimonyModel testimonys;
+// AddTestimony({this.testimonys});
   @override
   _AddTestimonyState createState() => _AddTestimonyState();
 }
 
 class _AddTestimonyState extends State<AddTestimony> {
+TestimonyModel testimonys = TestimonyModel();
+ String name;
+ String details;
 
- String _name;
- String _Testimony;
   final formkey = GlobalKey<FormState>();
   final mainKey = GlobalKey<ScaffoldState>();
 
@@ -58,9 +61,9 @@ class _AddTestimonyState extends State<AddTestimony> {
                           ),
                           maxLength: 25,
                           onSaved: (value){
-                            value = _name;
+                           testimonys.name = value;
                           },
-                          validator: (value){
+                          validator: (String value){
                             if(value.isEmpty){
                               return "please input your name";
                             }
@@ -85,9 +88,9 @@ class _AddTestimonyState extends State<AddTestimony> {
                           maxLines: 10,
                           maxLength: 2000,
                           onSaved: (String value){
-                            value = _Testimony;
+                           testimonys.details = value;
                           },
-                          validator: (value){
+                          validator: (String value){
                             if(value.isEmpty){
                               return "please input your Testimony text";
                             }
@@ -115,16 +118,13 @@ class _AddTestimonyState extends State<AddTestimony> {
     );
 
   }
-void onPressed(){
+ onPressed()async{
     if(formkey.currentState.validate()){
-      formkey.currentState.save();
+   formkey.currentState.save();
        // Navigator.of(context).pop();
-         TestimonyModel testimony = TestimonyModel(
-          name: _name,
-          details: _Testimony,
-        );
-        sendTes(testimony);
-        print(testimony.toString());
+        final TestimonyModel send = await sendTes(testimonys);
+        // TestimonyModel.fromJson(widget.testimonyModel.toJson())
+       // print(TestimonyModel.fromJson(json.decode(testimony.toString())));
 
         // SnackBar(
         //   backgroundColor: KdarkBlueColour,

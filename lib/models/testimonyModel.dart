@@ -1,3 +1,10 @@
+
+
+import 'dart:convert';
+
+TestimonyModel testimonyFromJson(String atrbutes) => TestimonyModel.fromJson(json.decode(atrbutes));
+String testimonyModelToJson(TestimonyModel data)=> json.encode(data.toJson());
+
 class TestimonyModel {
   String id;
   String name;
