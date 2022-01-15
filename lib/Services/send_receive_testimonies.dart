@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:html';
 
 import 'package:flutter/material.dart';
 import 'package:stea/models/testimonyModel.dart';
@@ -23,3 +24,20 @@ print(response.body);
 print(e);
   }
   }
+  
+  // Receiveing testimonies from database 
+
+Future<TestimonyModel> fetchTestimonies()async{
+  final http.Response response = await http.get(Uri.parse(url));
+  final Map<String, dynamic> responseData = json.decode(response.body);
+
+  responseData.forEach((String id, dynamic tdata){
+    TestimonyModel testimonies = TestimonyModel(
+      id: id,
+      name: tdata["name"],
+      details: tdata["details"],
+    );
+  });
+
+  return fetchTestimonies();
+}
