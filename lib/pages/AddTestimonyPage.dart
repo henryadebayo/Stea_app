@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:scoped_model/scoped_model.dart';
 import 'package:stea/Services/send_receive_testimonies.dart';
 import 'package:stea/models/testimonyModel.dart';
 import 'package:stea/pages/testimonyPage.dart';
@@ -103,12 +104,28 @@ TestimonyModel testimonys = TestimonyModel();
 
               SizedBox(height:MediaQuery.of(context).size.height/50),
 
-              RoundWhiteButton(
-                onTap: onPressed,
-                label: "Save",
-                width: 500.0,
-                height: 60.0,
-              ),
+              ScopedModelDescendant(
+                builder: (BuildContext context, Widget child, TestimonyScopedModel model) {
+                  return GestureDetector(
+                    onTap: (){
+                      if(model.isLosding){
+                        showLoadingIndicator();
+                      }
+                    },
+                    child: RoundWhiteButton(
+
+                      onTap: onPressed,
+
+                      label: "Save",
+                      width: 500.0,
+                      height: 60.0,
+                    ),
+                  );
+                  if(model.isLosding){
+                    showLoadingIndicator();
+                  }
+                }
+    ),
 
             ],
           ),
@@ -118,14 +135,13 @@ TestimonyModel testimonys = TestimonyModel();
     );
 
   }
- onPressed()async{
+ void onPressed(Function sendTes)async{
     if(formkey.currentState.validate()){
    formkey.currentState.save();
        // Navigator.of(context).pop();
-        final TestimonyModel send = await sendTes(testimonys);
-        // TestimonyModel.fromJson(widget.testimonyModel.toJson())
-       // print(TestimonyModel.fromJson(json.decode(testimony.toString())));
+   sendTes(testimonys);
 
+        }
         // SnackBar(
         //   backgroundColor: KdarkBlueColour,
         //   content: Text("Testimony upload successful"),
@@ -135,4 +151,16 @@ TestimonyModel testimonys = TestimonyModel();
         // );
     }
   }
+Future<void> showLoadingIndicator(){
+  return showDialog(context: context, barrierDismissible: false, builder: (BuildContext context){
+    return AlertDialog(
+      content: Row(
+        children: [
+          CircularProgressIndicator(),
+          SizedBox(width: 16,),
+          Text("Uploading Testimony..."),
+        ],
+      ),
+    );
+  });
 }

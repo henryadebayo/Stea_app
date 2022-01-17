@@ -65,8 +65,9 @@ class RoundWhiteButton extends StatelessWidget {
   double height;
   double width;
   Function onTap;
+  Function loadingIndicator;
 
-  RoundWhiteButton({@required this.label, this.height, this.width, this.onTap});
+  RoundWhiteButton({@required this.label, this.height, this.width, this.onTap, this.loadingIndicator});
   @override
   Widget build(BuildContext context){
 return Container(
@@ -81,7 +82,8 @@ side: BorderSide(
     color: KdarkBlueColour
 ),
 ),
-onPressed:onTap,
+onPressed:
+  onTap,
 padding: EdgeInsets.symmetric(horizontal: 10.0.w, vertical: 10.0.h),
 color: Colors.white,
 textColor: KdarkBlueColour,
@@ -89,5 +91,6 @@ child: Text(label,
 style: TextStyle(fontSize: 20.0.sp)),
 ),
 );
+
 }
 }
