@@ -5,7 +5,7 @@ import 'package:scoped_model/scoped_model.dart';
 import 'package:stea/models/testimonyModel.dart';
 import 'package:http/http.dart'as http;
 
-class TestimonyScopedModel extends Model{
+mixin TestimonyScopedModel on Model{
   String url = "https://stea-880c0-default-rtdb.firebaseio.com/testimonies.json";
 
 
