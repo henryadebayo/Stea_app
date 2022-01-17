@@ -36,7 +36,7 @@ class MyApp extends StatelessWidget {
             visualDensity: VisualDensity.adaptivePlatformDensity,
           ),
           debugShowCheckedModeBanner: false,
-          home: FunAnimation()
+          home: FunAnimation(model: mainModel)
           //UploadImage(),
           //
           //FunAnimation(),

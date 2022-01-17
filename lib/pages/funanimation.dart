@@ -1,9 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:stea/pages/register.dart';
+import 'package:stea/scopedModel/mainModel.dart';
 import 'package:stea/widgets/bottomNavigation.dart';
 import 'welcomePage.dart';
 
 class FunAnimation extends StatefulWidget {
+  final MainModel model;
+
+  const FunAnimation({Key key, this.model}) : super(key: key);
+
   @override
   _FunAnimationState createState() => _FunAnimationState();
 }
