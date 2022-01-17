@@ -109,7 +109,7 @@ TestimonyModel testimonys = TestimonyModel();
                   return GestureDetector(
                     onTap: (){
                       if(model.isLosding){
-                        showLoadingIndicator();
+                        showLoadingIndicator(context);
                       }
                     },
                     child: RoundWhiteButton(
@@ -121,9 +121,6 @@ TestimonyModel testimonys = TestimonyModel();
                       height: 60.0,
                     ),
                   );
-                  if(model.isLosding){
-                    showLoadingIndicator();
-                  }
                 }
     ),
 
@@ -151,7 +148,7 @@ TestimonyModel testimonys = TestimonyModel();
         // );
     }
   }
-Future<void> showLoadingIndicator(){
+Future<void> showLoadingIndicator(BuildContext context){
   return showDialog(context: context, barrierDismissible: false, builder: (BuildContext context){
     return AlertDialog(
       content: Row(
