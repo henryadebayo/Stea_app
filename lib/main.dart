@@ -3,9 +3,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:scoped_model/scoped_model.dart';
+import 'package:stea/Services/send_receive_testimonies.dart';
 import 'package:stea/data/uploadImage.dart';
 import 'package:stea/pages/home.dart';
-import 'package:stea/scopedModel/mainModel.dart';
 import 'package:stea/widgets/bottomNavigation.dart';
 import 'package:stea/widgets/const.dart';
 
@@ -21,13 +21,10 @@ void main() async {
 }
 
 class MyApp extends StatelessWidget {
-  final MainModel mainModel = MainModel();
   @override
   Widget build(BuildContext context) {
 
-    return ScopedModel<MainModel>(
-      model: mainModel,
-      child: ScreenUtilInit(
+    return ScreenUtilInit(
         builder:() => MaterialApp(
           title: 'Stea app',
           theme: ThemeData(
@@ -36,13 +33,13 @@ class MyApp extends StatelessWidget {
             visualDensity: VisualDensity.adaptivePlatformDensity,
           ),
           debugShowCheckedModeBanner: false,
-          home: FunAnimation(model: mainModel)
+          home: FunAnimation(),
           //UploadImage(),
           //
           //FunAnimation(),
           ),
             designSize: const Size (360, 640),
-      ),
+
     );
   }
 }

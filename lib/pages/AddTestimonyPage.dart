@@ -23,116 +23,123 @@ TestimonyModel testimonys = TestimonyModel();
 
   final formkey = GlobalKey<FormState>();
   final mainKey = GlobalKey<ScaffoldState>();
+  final TestimonyScopedModel testimonyScopedModel = TestimonyScopedModel();
 
-  @override
+
+
+
+@override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        automaticallyImplyLeading: false,
-        centerTitle: true,
-        backgroundColor: KdarkBlueColour,
-        title: Text(
-          "Testimonies",
-          style: TextStyle(fontFamily: KfontFamily, letterSpacing: 1.0, fontWeight: FontWeight.bold
-         ),
-        ),
-      ),
-      body: SingleChildScrollView(
-        child:  Padding(
-          padding: const EdgeInsets.only(left:10.0, right: 10.0, top: 10.0),
-          child: Column(
-            children: [
-              SizedBox(height:MediaQuery.of(context).size.height/12),
-
-              Form(
-                key: formkey,
-                child:
-                    Column(children: [
-                      TextFormField(
-                        //expands: true,
-
-                          decoration: InputDecoration(
-                              labelText: "Name",
-                              // hintStyle: TextStyle(),
-                              focusColor: Colors.red,
-                              border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(20.0),
-
-                              )
-                          ),
-                          maxLength: 25,
-                          onSaved: (value){
-                           testimonys.name = value;
-                          },
-                          validator: (String value){
-                            if(value.isEmpty){
-                              return "please input your name";
-                            }
-                            return null;
-                          }
-                      ),
-
-                      SizedBox(height:MediaQuery.of(context).size.height/30),
-
-                      TextFormField(
-                        //expands: true,
-
-                          decoration: InputDecoration(
-                              labelText: "Testimony",
-                              // hintStyle: TextStyle(),
-                              focusColor: Colors.red,
-                              border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(20.0),
-
-                              )
-                          ),
-                          maxLines: 10,
-                          maxLength: 2000,
-                          onSaved: (String value){
-                           testimonys.details = value;
-                          },
-                          validator: (String value){
-                            if(value.isEmpty){
-                              return "please input your Testimony text";
-                            }
-                            return null;
-                          }
-                      ),
-                    ],)
-
-              ),
-
-              SizedBox(height:MediaQuery.of(context).size.height/50),
-
-              ScopedModelDescendant(
-                builder: (BuildContext context, Widget child, TestimonyScopedModel model) {
-                  return GestureDetector(
-                    onTap: (){
-                      if(model.isLosding){
-                        showLoadingIndicator(context);
-                      }
-                    },
-                    child: RoundWhiteButton(
-
-                      onTap: onPressed,
-
-                      label: "Save",
-                      width: 500.0,
-                      height: 60.0,
-                    ),
-                  );
-                }
-    ),
-
-            ],
+    return ScopedModel<TestimonyScopedModel>(
+      model: testimonyScopedModel,
+      child: Scaffold(
+        appBar: AppBar(
+          automaticallyImplyLeading: false,
+          centerTitle: true,
+          backgroundColor: KdarkBlueColour,
+          title: Text(
+            "Testimonies",
+            style: TextStyle(fontFamily: KfontFamily, letterSpacing: 1.0, fontWeight: FontWeight.bold
+           ),
           ),
         ),
+        body: SingleChildScrollView(
+          child:  Padding(
+            padding: const EdgeInsets.only(left:10.0, right: 10.0, top: 10.0),
+            child: Column(
+              children: [
+                SizedBox(height:MediaQuery.of(context).size.height/12),
+
+                Form(
+                  key: formkey,
+                  child:
+                      Column(children: [
+                        TextFormField(
+                          //expands: true,
+
+                            decoration: InputDecoration(
+                                labelText: "Name",
+                                // hintStyle: TextStyle(),
+                                focusColor: Colors.red,
+                                border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(20.0),
+
+                                )
+                            ),
+                            maxLength: 25,
+                            onSaved: (value){
+                             testimonys.name = value;
+                            },
+                            validator: (String value){
+                              if(value.isEmpty){
+                                return "please input your name";
+                              }
+                              return null;
+                            }
+                        ),
+
+                        SizedBox(height:MediaQuery.of(context).size.height/30),
+
+                        TextFormField(
+                          //expands: true,
+
+                            decoration: InputDecoration(
+                                labelText: "Testimony",
+                                // hintStyle: TextStyle(),
+                                focusColor: Colors.red,
+                                border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(20.0),
+
+                                )
+                            ),
+                            maxLines: 10,
+                            maxLength: 2000,
+                            onSaved: (String value){
+                             testimonys.details = value;
+                            },
+                            validator: (String value){
+                              if(value.isEmpty){
+                                return "please input your Testimony text";
+                              }
+                              return null;
+                            }
+                        ),
+                      ],)
+
+                ),
+
+                SizedBox(height:MediaQuery.of(context).size.height/50),
+
+                ScopedModelDescendant(
+                  builder: (BuildContext context, Widget child, TestimonyScopedModel model) {
+                    return GestureDetector(
+                      onTap: (){
+                        if(model.isLosding){
+                          showLoadingIndicator(context);
+                        }
+                      },
+                      child: RoundWhiteButton(
+
+                        onTap: onPressed,
+
+                        label: "Save",
+                        width: 500.0,
+                        height: 60.0,
+                      ),
+                    );
+                  }
       ),
 
+              ],
+            ),
+          ),
+        ),
+
+      ),
     );
 
   }
- void onPressed(Function sendTes)async{
+ onPressed(Function sendTes)async{
     if(formkey.currentState.validate()){
    formkey.currentState.save();
        // Navigator.of(context).pop();
