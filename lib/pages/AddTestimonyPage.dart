@@ -139,13 +139,15 @@ TestimonyModel testimonys = TestimonyModel();
     );
 
   }
- onPressed(Function sendTes)async{
+void onPressed(Function sendTes){
     if(formkey.currentState.validate()){
    formkey.currentState.save();
-       // Navigator.of(context).pop();
    sendTes(testimonys);
+    Navigator.of(context).pop();
 
         }
+}
+}
         // SnackBar(
         //   backgroundColor: KdarkBlueColour,
         //   content: Text("Testimony upload successful"),
@@ -153,8 +155,7 @@ TestimonyModel testimonys = TestimonyModel();
         //     seconds: 2
         //   ),
         // );
-    }
-  }
+
 Future<void> showLoadingIndicator(BuildContext context){
   return showDialog(context: context, barrierDismissible: false, builder: (BuildContext context){
     return AlertDialog(
