@@ -23,7 +23,7 @@ class testimonyItem extends StatelessWidget {
           image: DecorationImage(image: AssetImage("images/beautiful-bright-blue-bloom-petals-dew.jpg"),
             fit: BoxFit.cover,
           ),
-
+          borderRadius: BorderRadius.circular(30.0.r),
         ),
         child: Column(
           children: [
