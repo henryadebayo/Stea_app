@@ -14,21 +14,22 @@ class AddTestimony extends StatefulWidget {
 // AddTestimony({this.testimonys});
   @override
   _AddTestimonyState createState() => _AddTestimonyState();
+
 }
 
 class _AddTestimonyState extends State<AddTestimony> {
-TestimonyModel testimonys = TestimonyModel();
- String name;
- String details;
+
+  String name;
+  String details;
+  TestimonyModel testimonys = TestimonyModel();
+
 
   final formkey = GlobalKey<FormState>();
   final mainKey = GlobalKey<ScaffoldState>();
   final TestimonyScopedModel testimonyScopedModel = TestimonyScopedModel();
 
 
-
-
-@override
+  @override
   Widget build(BuildContext context) {
     return ScopedModel<TestimonyScopedModel>(
       model: testimonyScopedModel,
@@ -39,96 +40,114 @@ TestimonyModel testimonys = TestimonyModel();
           backgroundColor: KdarkBlueColour,
           title: Text(
             "Testimonies",
-            style: TextStyle(fontFamily: KfontFamily, letterSpacing: 1.0, fontWeight: FontWeight.bold
-           ),
+            style: TextStyle(fontFamily: KfontFamily,
+                letterSpacing: 1.0,
+                fontWeight: FontWeight.bold
+            ),
           ),
         ),
         body: SingleChildScrollView(
-          child:  Padding(
-            padding: const EdgeInsets.only(left:10.0, right: 10.0, top: 10.0),
+          child: Padding(
+            padding: const EdgeInsets.only(left: 10.0, right: 10.0, top: 10.0),
             child: Column(
               children: [
-                SizedBox(height:MediaQuery.of(context).size.height/12),
+                SizedBox(height: MediaQuery
+                    .of(context)
+                    .size
+                    .height / 12),
 
                 Form(
-                  key: formkey,
-                  child:
-                      Column(children: [
-                        TextFormField(
-                          //expands: true,
+                    key: formkey,
+                    child:
+                    Column(children: [
+                      TextFormField(
+                        //expands: true,
 
-                            decoration: InputDecoration(
-                                labelText: "Name",
-                                // hintStyle: TextStyle(),
-                                focusColor: Colors.red,
-                                border: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(20.0),
+                          decoration: InputDecoration(
+                              labelText: "Name",
+                              // hintStyle: TextStyle(),
+                              focusColor: Colors.red,
+                              border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(20.0),
 
-                                )
-                            ),
-                            maxLength: 25,
-                            onSaved: (value){
-                             testimonys.name = value;
-                            },
-                            validator: (String value){
-                              if(value.isEmpty){
-                                return "please input your name";
-                              }
-                              return null;
+                              )
+                          ),
+                          maxLength: 25,
+                          onSaved: (value) {
+                            testimonys.name = value;
+                          },
+                          validator: (String value) {
+                            if (value.isEmpty) {
+                              return "please input your name";
                             }
-                        ),
+                            return null;
+                          }
+                      ),
 
-                        SizedBox(height:MediaQuery.of(context).size.height/30),
+                      SizedBox(height: MediaQuery
+                          .of(context)
+                          .size
+                          .height / 30),
 
-                        TextFormField(
-                          //expands: true,
+                      TextFormField(
+                        //expands: true,
 
-                            decoration: InputDecoration(
-                                labelText: "Testimony",
-                                // hintStyle: TextStyle(),
-                                focusColor: Colors.red,
-                                border: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(20.0),
+                          decoration: InputDecoration(
+                              labelText: "Testimony",
+                              // hintStyle: TextStyle(),
+                              focusColor: Colors.red,
+                              border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(20.0),
 
-                                )
-                            ),
-                            maxLines: 10,
-                            maxLength: 2000,
-                            onSaved: (String value){
-                             testimonys.details = value;
-                            },
-                            validator: (String value){
-                              if(value.isEmpty){
-                                return "please input your Testimony text";
-                              }
-                              return null;
+                              )
+                          ),
+                          maxLines: 10,
+                          maxLength: 2000,
+                          onSaved: (String value) {
+                            testimonys.details = value;
+                          },
+                          validator: (String value) {
+                            if (value.isEmpty) {
+                              return "please input your Testimony text";
                             }
-                        ),
-                      ],)
+                            return null;
+                          }
+                      ),
+                    ],)
 
                 ),
 
-                SizedBox(height:MediaQuery.of(context).size.height/50),
+                SizedBox(height: MediaQuery
+                    .of(context)
+                    .size
+                    .height / 50),
 
                 ScopedModelDescendant(
-                  builder: (BuildContext context, Widget child, TestimonyScopedModel model) {
-                    return GestureDetector(
-                      onTap: (){
-                        if(model.isLosding){
-                          showLoadingIndicator(context);
-                        }
-                      },
-                      child: RoundWhiteButton(
+                    builder: (BuildContext context, Widget child,
+                        TestimonyScopedModel model) {
+                      return GestureDetector(
+                        onTap:(){
+                          if(model.isLoading){
+                            showLoadingIndicator(context);
+                            onPressed(testimonys);
+                          }
+                        },
+                        child: RoundWhiteButton(
 
-                        onTap: onPressed,
-
-                        label: "Save",
-                        width: 500.0,
-                        height: 60.0,
-                      ),
-                    );
-                  }
-      ),
+                          onTap:(){
+                            if(testimonyScopedModel.isLoading){
+                             showLoadingIndicator(context);
+                            }else{
+                              //showLoadingIndicator(context);
+                            }
+                          }, //onPressed(testimonys),
+                          label: "Save",
+                          width: 500.0,
+                          height: 60.0,
+                        ),
+                      );
+                    }
+                ),
 
               ],
             ),
@@ -137,35 +156,37 @@ TestimonyModel testimonys = TestimonyModel();
 
       ),
     );
-
   }
-void onPressed(Function sendTes){
-    if(formkey.currentState.validate()){
-   formkey.currentState.save();
-   sendTes(testimonys);
-    Navigator.of(context).pop();
 
-        }
-}
-}
-        // SnackBar(
-        //   backgroundColor: KdarkBlueColour,
-        //   content: Text("Testimony upload successful"),
-        //   duration: Duration(
-        //     seconds: 2
-        //   ),
-        // );
+ void onPressed(TestimonyModel testimonyModel) async {
+    if (formkey.currentState.validate()) {
+      formkey.currentState.save();
+      await testimonyScopedModel.sendTes(testimonys);
+      Navigator.of(context).pop();
+    }
+  }
 
-Future<void> showLoadingIndicator(BuildContext context){
-  return showDialog(context: context, barrierDismissible: false, builder: (BuildContext context){
-    return AlertDialog(
-      content: Row(
-        children: [
-          CircularProgressIndicator(),
-          SizedBox(width: 16,),
-          Text("Uploading Testimony..."),
-        ],
-      ),
-    );
-  });
+  // SnackBar(
+  //   backgroundColor: KdarkBlueColour,
+  //   content: Text("Testimony upload successful"),
+  //   duration: Duration(
+  //     seconds: 2
+  //   ),
+  // );
+
+  Future<void> showLoadingIndicator(BuildContext context) {
+    return showDialog(context: context,
+        barrierDismissible: false,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            content: Row(
+              children: [
+                CircularProgressIndicator(),
+                SizedBox(width: 16,),
+                Text("Uploading Testimony..."),
+              ],
+            ),
+          );
+        });
+  }
 }

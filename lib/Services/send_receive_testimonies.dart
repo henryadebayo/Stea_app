@@ -13,13 +13,11 @@ class TestimonyScopedModel extends Model{
   List<TestimonyModel> get testimonis {
     return List.from(_testimonis);
   }
-  bool _isloading = false;
-  bool get isLosding{
+
+  bool get isLoading{
     return _isloading;
   }
-  set setIsLoading(bool){
-    _isloading = false;
-  }
+  bool _isloading = true;
 
   List<TestimonyModel> get testimonys{
     return List.from(_testimonis);
@@ -31,8 +29,8 @@ class TestimonyScopedModel extends Model{
 //Sending Testimonies to DataBase
 
     Future<bool> sendTes(TestimonyModel testimony) async {
-      _isloading = true;
-      notifyListeners();
+     _isloading = true;
+     notifyListeners();
       try {
 
         final Map<String, dynamic> tdata = {
