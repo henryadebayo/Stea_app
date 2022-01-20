@@ -39,6 +39,7 @@ class _AddTestimonyState extends State<AddTestimony> {
     return ScopedModel<TestimonyScopedModel>(
       model: testimonyScopedModel,
       child: Scaffold(
+        key: mainKey,
         appBar: AppBar(
           automaticallyImplyLeading: false,
           centerTitle: true,
@@ -169,11 +170,22 @@ class _AddTestimonyState extends State<AddTestimony> {
        Navigator.of(context).pop();
        SnackBar snackBar = SnackBar(
           backgroundColor: KdarkBlueColour,
-          content: Text("Testimony upload successful"),
+          content: Text("Testimony uploaded successfully"),
           duration: Duration(
             seconds: 2
           ),
         );
+       mainKey.currentState.showSnackBar(snackBar);
+      }else if(value!= true){
+        Navigator.of(context).pop();
+        SnackBar snackBar = SnackBar(
+          backgroundColor: KdarkBlueColour,
+          content: Text("Failed to upload Testimony"),
+          duration: Duration(
+              seconds: 2
+          ),
+        );
+        mainKey.currentState.showSnackBar(snackBar);
       }
     }
   }
