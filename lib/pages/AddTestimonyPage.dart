@@ -181,7 +181,7 @@ class _AddTestimonyState extends State<AddTestimony> {
         Navigator.of(context).pop();
         SnackBar snackBar = SnackBar(
           backgroundColor: KdarkBlueColour,
-          content: Text("Failed to upload Testimony"),
+          content: Text("Failed to upload Testimony", style:TextStyle(color: Colors.redAccent),),
           duration: Duration(
               seconds: 2
           ),
