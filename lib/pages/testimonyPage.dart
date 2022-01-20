@@ -35,6 +35,7 @@ class _TestimonyPageState extends State<TestimonyPage> {
                 return Column(
                   children: [
                     Container(
+
                       child: Column(
                         children: [
                           testimonyItem(

@@ -19,7 +19,12 @@ class testimonyItem extends StatelessWidget {
       child: Container(
         height: 100.h,
         width: 180.w,
-        decoration: BoxDecoration(color: Colors.redAccent),
+        decoration: BoxDecoration(
+          image: DecorationImage(image: AssetImage("images/beautiful-bright-blue-bloom-petals-dew.jpg"),
+            fit: BoxFit.cover,
+          ),
+
+        ),
         child: Column(
           children: [
             SizedBox(height: 10.0),
