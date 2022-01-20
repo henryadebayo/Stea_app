@@ -141,11 +141,12 @@ class _AddTestimonyState extends State<AddTestimony> {
                         child: RoundWhiteButton(
 
                           onTap:(){
-                            if(model.isLoading != true){
+                            if(model.isLoading){
                              showLoadingIndicator(context);
-                              //onPressed(testimonys);
-                             Navigator.of(context).pop();
+                            onPressed(testimonys);
                             }
+                            showLoadingIndicator(context);
+                            onPressed(testimonys);
                           },
                           label: "Save",
                           width: 500.0,
