@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:scoped_model/scoped_model.dart';
 import 'package:stea/Services/send_receive_testimonies.dart';
 import 'package:stea/models/testimonyModel.dart';
@@ -22,6 +23,10 @@ class _AddTestimonyState extends State<AddTestimony> {
   String name;
   String details;
   TestimonyModel testimonys = TestimonyModel();
+  // final spinkit = SpinKitCubeGrid(
+  //   color: Colors.white,
+  //   size: 50.0,
+  // );
 
 
   final formkey = GlobalKey<FormState>();
@@ -135,12 +140,12 @@ class _AddTestimonyState extends State<AddTestimony> {
                         child: RoundWhiteButton(
 
                           onTap:(){
-                            if(testimonyScopedModel.isLoading){
+                            if(model.isLoading != true){
                              showLoadingIndicator(context);
-                            }else{
-                              //showLoadingIndicator(context);
+                              //onPressed(testimonys);
+                             Navigator.of(context).pop();
                             }
-                          }, //onPressed(testimonys),
+                          },
                           label: "Save",
                           width: 500.0,
                           height: 60.0,
@@ -148,12 +153,10 @@ class _AddTestimonyState extends State<AddTestimony> {
                       );
                     }
                 ),
-
               ],
             ),
           ),
         ),
-
       ),
     );
   }
@@ -161,18 +164,21 @@ class _AddTestimonyState extends State<AddTestimony> {
  void onPressed(TestimonyModel testimonyModel) async {
     if (formkey.currentState.validate()) {
       formkey.currentState.save();
-      await testimonyScopedModel.sendTes(testimonys);
-      Navigator.of(context).pop();
+     bool value = await testimonyScopedModel.sendTes(testimonys);
+      if(value){
+       Navigator.of(context).pop();
+       SnackBar snackBar = SnackBar(
+          backgroundColor: KdarkBlueColour,
+          content: Text("Testimony upload successful"),
+          duration: Duration(
+            seconds: 2
+          ),
+        );
+      }
     }
   }
 
-  // SnackBar(
-  //   backgroundColor: KdarkBlueColour,
-  //   content: Text("Testimony upload successful"),
-  //   duration: Duration(
-  //     seconds: 2
-  //   ),
-  // );
+
 
   Future<void> showLoadingIndicator(BuildContext context) {
     return showDialog(context: context,
@@ -181,7 +187,10 @@ class _AddTestimonyState extends State<AddTestimony> {
           return AlertDialog(
             content: Row(
               children: [
-                CircularProgressIndicator(),
+              SpinKitCubeGrid(
+              color: Colors.blueAccent,
+              size: 25.0,
+            ),
                 SizedBox(width: 16,),
                 Text("Uploading Testimony..."),
               ],
