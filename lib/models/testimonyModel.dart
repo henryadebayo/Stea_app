@@ -38,7 +38,7 @@ class TestimonyModel {
 
 List<TestimonyModel> tes = [
   TestimonyModel(
-      name: "Henry",
+      name: "Henry Adebayo",
       details: "Thank God for life, and for all the good things coming my way"),
   TestimonyModel(
       name: "Dami",
@@ -50,15 +50,15 @@ List<TestimonyModel> tes = [
       name: "Daniel",
       details: "Thank God for life, and for all the good things coming my way"),
   TestimonyModel(
-      name: "Mary",
+      name: "Mary Adebayo",
       details: "Thank God for life, and for all the good things coming my way"),
   TestimonyModel(
-      name: "Grace",
+      name: "Grace Bidi",
       details: "Thank God for life, and for all the good things coming my way"),
   TestimonyModel(
-      name: "Toke",
+      name: "Toke Olowo",
       details: "Thank God for life, and for all the good things coming my way"),
   TestimonyModel(
-      name: "Tola",
+      name: "Tola Olowo",
       details: "Thank God for life, and for all the good things coming my way"),
 ];

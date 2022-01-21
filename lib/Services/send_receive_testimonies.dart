@@ -13,11 +13,12 @@ class TestimonyScopedModel extends Model{
   List<TestimonyModel> get testimonis {
     return List.from(_testimonis);
   }
+  bool _isloading = true;
 
   bool get isLoading{
     return _isloading;
   }
-  bool _isloading = true;
+
 
   List<TestimonyModel> get testimonys{
     return List.from(_testimonis);
@@ -57,6 +58,8 @@ class TestimonyScopedModel extends Model{
     // Receiveing testimonies from database
 
     Future<bool> fetchTestimonies() async {
+    _isloading = true;
+    notifyListeners();
       //int testimonyIndex = testimonis
       try {
         final http.Response response = await http.get(Uri.parse(url));
@@ -71,6 +74,8 @@ class TestimonyScopedModel extends Model{
             details: tdata["details"],
           );
           _testimonis.add(testimonies);
+          _isloading = false;
+          notifyListeners();
         });
       } catch (e) {
         print(e);

@@ -9,32 +9,37 @@ class testimonyItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 220.h,
+      height: 200.h,
        width: double.infinity,
       decoration: BoxDecoration(
         image: DecorationImage(image: AssetImage("images/beautiful-bright-blue-bloom-petals-dew.jpg"),
           fit: BoxFit.cover,
         ),
         borderRadius: BorderRadius.circular(20.0.r),
+       // boxShadow: [BoxShadow(blurRadius:8.0, offset: Offset(0, 3), color: Colors.blueAccent ),
+       // ],
       ),
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          SizedBox(height: 10.0),
-          Text(
-            testifyerName,
-            style: TextStyle(
-                color: Colors.white,
-                fontWeight: FontWeight.w900,
-                fontSize: 20.0),
+          Padding(
+            padding:  EdgeInsets.only(top: 20.0.h, left: 20.0.w),
+            child: Text(
+              testifyerName,
+              style: TextStyle(
+                  color: Colors.white,
+                  fontWeight: FontWeight.w900,
+                  fontSize: 20.0.sp),
+            ),
           ),
           Padding(
-              padding: EdgeInsets.only(left: 10.0, right: 5.0, top: 8.0),
+              padding: EdgeInsets.only(left: 10.0.w, right: 10.0.w, top: 14.0.h),
               child: Text(
                 testifyerText,
                 style: TextStyle(
                     color: Colors.white,
-                    fontSize: 18.0,
-                    fontStyle: FontStyle.italic),
+                    fontSize: 15.0.sp,
+                          ),
               )),
         ],
       ),
