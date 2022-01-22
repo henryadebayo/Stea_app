@@ -128,7 +128,7 @@ class _AddTestimonyState extends State<AddTestimony> {
                     .size
                     .height / 50),
 
-                ScopedModelDescendant(
+                ScopedModelDescendant<TestimonyScopedModel>(
                     builder: (BuildContext context, Widget child,
                         TestimonyScopedModel model) {
                       return GestureDetector(

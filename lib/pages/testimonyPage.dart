@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:scoped_model/scoped_model.dart';
 import 'package:stea/Services/send_receive_testimonies.dart';
 import 'package:stea/models/testimonyModel.dart';
 import 'package:stea/pages/AddTestimonyPage.dart';
@@ -18,27 +19,11 @@ class TestimonyPage extends StatefulWidget {
 
 class _TestimonyPageState extends State<TestimonyPage> {
 
-  @override
-    // Future<bool> initState() {
-    //   setState(()async {
-    //      await widget.testimonyScopedModel.fetchTestimonies();
-    //   });
-    //   super.initState();
-    //   return false;
-    // }
-
     @override
     Widget build(BuildContext context) {
-      // return widget.testimonyScopedModel.isLoading ? Row(
-      //   children: [
-      //     SpinKitCubeGrid(
-      //       color: Colors.blueAccent,
-      //       size: 25.0,
-      //     ),
-      //     SizedBox(width: 16,),
-      //     Text("Fetching Testimonies..."),
-      //   ],
-      // ) :
+    //  widget.testimonyScopedModel.fetchTestimonies();
+      //List<TestimonyModel> testi = widget.testimonyScopedModel.testimonis;
+     
        return Scaffold(
         appBar: AppBar(
           centerTitle: true,
@@ -48,17 +33,18 @@ class _TestimonyPageState extends State<TestimonyPage> {
             child: Text("Testimony"),
           ),
         ),
-        body: Stack(children: [
+        body:  Stack( children: [
           Padding(
-            padding: EdgeInsets.only(left: 5.0.w, right: 5.0.w, top: 10.0.h),
-            child: ListView.builder(
+            padding: EdgeInsets.only(
+                left: 5.0.w, right: 5.0.w, top: 10.0.h),
+            child:
+            ListView.builder(
                 scrollDirection: Axis.vertical,
                 itemCount: tes.length,
                 itemBuilder: (context, index) {
                   return Column(
                     children: [
                       Container(
-
                         child: Column(
                           children: [
                             testimonyItem(
@@ -87,8 +73,8 @@ class _TestimonyPageState extends State<TestimonyPage> {
                 color: KdarkBlueColour,
               ),
             ),
-          )
+          ),
         ]),
-      );
+          );
     }
   }
