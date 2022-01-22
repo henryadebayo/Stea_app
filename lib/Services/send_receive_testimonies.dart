@@ -1,18 +1,21 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:scoped_model/scoped_model.dart';
 import 'package:stea/models/testimonyModel.dart';
 import 'package:http/http.dart'as http;
+import 'package:stea/pages/AddTestimonyPage.dart';
+import 'package:stea/widgets/const.dart';
+import 'package:stea/widgets/testimonyItem.dart';
 
 class TestimonyScopedModel extends Model{
   String url = "https://stea-880c0-default-rtdb.firebaseio.com/testimonies.json";
 
 
   List<TestimonyModel> _testimonyItems = [];
-  List<TestimonyModel> get testimonis {
-    return List.from(_testimonyItems);
-  }
+
   bool _isloading = true;
 
   bool get isLoading{
@@ -23,13 +26,11 @@ class TestimonyScopedModel extends Model{
   List<TestimonyModel> get testimonys{
     return List.from(_testimonyItems);
   }
+
   int get testimonyLenght {
     return _testimonyItems.length;
   }
 
-  List<TestimonyModel> get testimonies{
-    return List.from(_testimonyItems);
-  }
 
 //Sending Testimonies to DataBase
 
@@ -44,9 +45,11 @@ class TestimonyScopedModel extends Model{
         };
         http.Response response = await http.post(Uri.parse(url),
             body: json.encode(tdata));
+        fetchTestimonies();
 
         print(response.statusCode);
         print(response.body);
+        print("this are $testimonys");
         _isloading = false;
         notifyListeners();
         return Future.value(true);
@@ -62,10 +65,11 @@ class TestimonyScopedModel extends Model{
     // Receiveing testimonies from database
 
     Future<bool> fetchTestimonies() async {
-      //int testimonyIndex = testimonis
+    _isloading = true;
+    notifyListeners();
       try {
         final http.Response response = await http.get(Uri.parse(url));
-        List<TestimonyModel>_ftestimony = [];
+
         final Map<String, dynamic> responseData = json.decode(response.body);
 
         responseData.forEach((String id, dynamic tdata) {
@@ -76,14 +80,17 @@ class TestimonyScopedModel extends Model{
             name: tdata["name"],
             details: tdata["details"],
           );
-          _ftestimony.add(testimoniess);
+          _testimonyItems.add(testimoniess);
         });
-        _testimonyItems = _ftestimony;
-        print(_testimonyItems);
+        // _isloading = false;
+        // notifyListeners();
+        // print(_testimonyItems);
+        // return Future.value(true);
+
       } catch (e) {
         print(e);
       }
-      return fetchTestimonies();
+    return Future.value(false);
     }
 
     TestimonyModel getFoodTestimonyWithId(String tdata) {
@@ -97,3 +104,78 @@ class TestimonyScopedModel extends Model{
       }
     }
   }
+
+
+
+
+
+class TestimonyPage extends StatefulWidget {
+  TestimonyScopedModel testimonyScopedModel;
+  TestimonyPage({Key key}) : super(key: key);
+
+  @override
+  _TestimonyPageState createState() => _TestimonyPageState();
+}
+
+class _TestimonyPageState extends State<TestimonyPage> {
+
+  @override
+  Widget build(BuildContext context) {
+
+    //  widget.testimonyScopedModel.fetchTestimonies();
+    //List<TestimonyModel> testi = widget.testimonyScopedModel.testimonis;
+
+    return Scaffold(
+      appBar: AppBar(
+        centerTitle: true,
+        backgroundColor: KdarkBlueColour,
+        title: Title(
+          color: Colors.white,
+          child: Text("Testimony"),
+        ),
+      ),
+      body:  Stack( children: [
+        Padding(
+          padding: EdgeInsets.only(
+              left: 5.0.w, right: 5.0.w, top: 10.0.h),
+          child:
+          ListView.builder(
+              scrollDirection: Axis.vertical,
+              itemCount: widget.testimonyScopedModel.testimonyLenght,
+              itemBuilder: (context, index) {
+                return Column(
+                  children: [
+                    Container(
+                      child: Column(
+                        children: [
+                          testimonyItem(
+                            testifyerName: widget.testimonyScopedModel.testimonys[index].name,
+                            testifyerText: widget.testimonyScopedModel.testimonys[index].details,
+                          ),
+                          SizedBox(height: 10.0.h),
+                        ],
+                      ),
+                    ),
+                  ],
+                );
+              }),
+        ),
+        Positioned(
+          right: 20.0,
+          bottom: 20.0,
+          child: FloatingActionButton(
+            onPressed: () {
+              Navigator.of(context).push(MaterialPageRoute(
+                  builder: (BuildContext context) => AddTestimony()));
+            },
+            backgroundColor: Colors.white,
+            child: Icon(
+              FontAwesomeIcons.plus,
+              color: KdarkBlueColour,
+            ),
+          ),
+        ),
+      ]),
+    );
+  }
+}
