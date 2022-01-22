@@ -40,7 +40,7 @@ class _TestimonyPageState extends State<TestimonyPage> {
             child:
             ListView.builder(
                 scrollDirection: Axis.vertical,
-                itemCount: tes.length,
+                itemCount: widget.testimonyScopedModel.testimonyLenght,
                 itemBuilder: (context, index) {
                   return Column(
                     children: [
@@ -48,8 +48,8 @@ class _TestimonyPageState extends State<TestimonyPage> {
                         child: Column(
                           children: [
                             testimonyItem(
-                              testifyerName: tes[index].name,
-                              testifyerText: tes[index].details,
+                              testifyerName: widget.testimonyScopedModel.testimonies[index].name,
+                              testifyerText: widget.testimonyScopedModel.testimonies[index].details,
                             ),
                             SizedBox(height: 10.0.h),
                           ],

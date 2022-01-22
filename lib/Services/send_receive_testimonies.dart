@@ -27,6 +27,10 @@ class TestimonyScopedModel extends Model{
     return _testimonyItems.length;
   }
 
+  List<TestimonyModel> get testimonies{
+    return List.from(_testimonyItems);
+  }
+
 //Sending Testimonies to DataBase
 
     Future<bool> sendTes(TestimonyModel testimony) async {
@@ -72,9 +76,10 @@ class TestimonyScopedModel extends Model{
             name: tdata["name"],
             details: tdata["details"],
           );
-          _testimonyItems.add(testimoniess);
+          _ftestimony.add(testimoniess);
         });
         _testimonyItems = _ftestimony;
+        print(_testimonyItems);
       } catch (e) {
         print(e);
       }
