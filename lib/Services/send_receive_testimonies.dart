@@ -71,7 +71,7 @@ class TestimonyScopedModel extends Model{
         final http.Response response = await http.get(Uri.parse(url));
 
         final Map<String, dynamic> responseData = json.decode(response.body);
-
+List<TestimonyModel>test =[];
         responseData.forEach((String id, dynamic tdata) {
           //TestimonyModel theTestimony = getFoodTestimonyWithId(tdata);
 
@@ -80,8 +80,9 @@ class TestimonyScopedModel extends Model{
             name: tdata["name"],
             details: tdata["details"],
           );
-          _testimonyItems.add(testimoniess);
+          test.add(testimoniess);
         });
+        _testimonyItems = test;
         // _isloading = false;
         // notifyListeners();
         // print(_testimonyItems);
@@ -125,6 +126,8 @@ class _TestimonyPageState extends State<TestimonyPage> {
     //  widget.testimonyScopedModel.fetchTestimonies();
     //List<TestimonyModel> testi = widget.testimonyScopedModel.testimonis;
 
+    var testimonyScopedModel = TestimonyScopedModel();
+
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
@@ -139,26 +142,29 @@ class _TestimonyPageState extends State<TestimonyPage> {
           padding: EdgeInsets.only(
               left: 5.0.w, right: 5.0.w, top: 10.0.h),
           child:
-          ListView.builder(
-              scrollDirection: Axis.vertical,
-              itemCount: widget.testimonyScopedModel.testimonyLenght,
-              itemBuilder: (context, index) {
-                return Column(
-                  children: [
-                    Container(
-                      child: Column(
-                        children: [
-                          testimonyItem(
-                            testifyerName: widget.testimonyScopedModel.testimonys[index].name,
-                            testifyerText: widget.testimonyScopedModel.testimonys[index].details,
-                          ),
-                          SizedBox(height: 10.0.h),
-                        ],
+          RefreshIndicator(
+            onRefresh: testimonyScopedModel.fetchTestimonies,
+            child: ListView.builder(
+                scrollDirection: Axis.vertical,
+                itemCount: 5,
+                itemBuilder: (context, index) {
+                  return Column(
+                    children: [
+                      Container(
+                        child: Column(
+                          children: [
+                            testimonyItem(
+                              testifyerName: testimonyScopedModel.testimonys[index].name,
+                              testifyerText: testimonyScopedModel.testimonys[index].details,
+                            ),
+                            SizedBox(height: 10.0.h),
+                          ],
+                        ),
                       ),
-                    ),
-                  ],
-                );
-              }),
+                    ],
+                  );
+                }),
+          ),
         ),
         Positioned(
           right: 20.0,

@@ -136,6 +136,7 @@ class _AddTestimonyState extends State<AddTestimony> {
                           if(model.isLoading){
                             showLoadingIndicator(context);
                             onPressed(testimonys);
+                            var fetchTestimonies = testimonyScopedModel.fetchTestimonies;
                           }
                         },
                         child: RoundWhiteButton(
