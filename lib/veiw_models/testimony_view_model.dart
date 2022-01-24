@@ -13,6 +13,7 @@ class TestimonyVeiwModel extends ChangeNotifier{
 
  bool get loading => _loading;
  List<TestimonyModel> get testimonyModel => _testimonyModel;
+ TestimonyError get testimonyError => _testimonyError;
 
 
  setLoading(bool loading)async{
