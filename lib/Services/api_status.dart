@@ -16,5 +16,5 @@ class TestimonyError {
   int code;
   Object message;
 
-  TestimonyError({this.code, this.message})
+  TestimonyError({this.code, this.message});
 }

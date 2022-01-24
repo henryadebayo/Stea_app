@@ -8,7 +8,53 @@
 // import 'package:stea/pages/AddTestimonyPage.dart';
 // import 'package:stea/widgets/const.dart';
 // import 'package:stea/widgets/testimonyItem.dart';
-//
+
+import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:stea/Services/testimony_services.dart';
+import 'package:stea/veiw_models/testimony_view_model.dart';
+
+class TestimonyPage extends StatelessWidget {
+
+  @override
+  Widget build(BuildContext context) {
+    TestimonyVeiwModel testimonyVeiwModel = context.watch<TestimonyVeiwModel>();
+    return Container();
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // class TestimonyPage extends StatefulWidget {
 //   TestimonyScopedModel testimonyScopedModel;
 //      TestimonyPage({Key key}) : super(key: key);

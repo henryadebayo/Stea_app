@@ -1,18 +1,14 @@
 import 'dart:convert';
-
+import 'package:provider/provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:scoped_model/scoped_model.dart';
 import 'package:stea/Services/send_receive_testimonies.dart';
 import 'package:stea/models/testimonyModel.dart';
-import 'package:stea/pages/testimonyPage.dart';
 import 'package:stea/widgets/buton.dart';
 import 'package:stea/widgets/const.dart';
-import 'package:stea/widgets/customtextform.dart';
 
 class AddTestimony extends StatefulWidget {
-// final TestimonyModel testimonys;
-// AddTestimony({this.testimonys});
   @override
   _AddTestimonyState createState() => _AddTestimonyState();
 
@@ -22,11 +18,6 @@ class _AddTestimonyState extends State<AddTestimony> {
 
   String name;
   String details;
-  TestimonyModel testimonys = TestimonyModel();
-  // final spinkit = SpinKitCubeGrid(
-  //   color: Colors.white,
-  //   size: 50.0,
-  // );
 
 
   final formkey = GlobalKey<FormState>();
