@@ -9,7 +9,9 @@ class TestimonyVeiwModel extends ChangeNotifier{
  List<TestimonyModel> _testimonyModel = [];
  TestimonyError _testimonyError;
 
-
+TestimonyVeiwModel(){
+  getTestimony();
+}
 
  bool get loading => _loading;
  List<TestimonyModel> get testimonyModel => _testimonyModel;

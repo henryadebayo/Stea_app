@@ -6,7 +6,7 @@ import 'welcomePage.dart';
 
 class FunAnimation extends StatefulWidget {
 
-  const FunAnimation({Key key, TestimonyScopedModel TestimonyScopedModel}) : super(key: key);
+  const FunAnimation({Key key,}) : super(key: key);
 
   @override
   _FunAnimationState createState() => _FunAnimationState();

@@ -9,7 +9,6 @@
 // import 'package:stea/widgets/const.dart';
 // import 'package:stea/widgets/testimonyItem.dart';
 
-import 'dart:js';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -84,8 +83,8 @@ class TestimonyPage extends StatelessWidget {
         bottom: 20.0,
         child: FloatingActionButton(
           onPressed: () {
-            Navigator.of(context).push(MaterialPageRoute(
-                builder: (BuildContext context) => AddTestimony()));
+            // Navigator.of(context).push(MaterialPageRoute(
+            //     builder: (BuildContext context) => AddTestimony()));
           },
           backgroundColor: Colors.white,
           child: Icon(
