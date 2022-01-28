@@ -12,6 +12,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
 import 'package:stea/Services/testimony_services.dart';
@@ -46,7 +47,23 @@ class TestimonyPage extends StatelessWidget {
 
   _ui(TestimonyVeiwModel testimonyVeiwModel){
     if(testimonyVeiwModel.loading){
-      return Container();
+      return Column(
+        children:[
+          Center( child: AlertDialog(
+      content: Row(
+      children: [
+      SpinKitCubeGrid(
+      color: Colors.blueAccent,
+        size: 25.0,
+      ),
+    SizedBox(width: 16,),
+    Text("Loading Testimony..."),
+    ],
+    ),
+    ),
+          ),
+        ],
+      );
     }if(testimonyVeiwModel.testimonyError != null){
       return Container();
     }
@@ -83,8 +100,8 @@ class TestimonyPage extends StatelessWidget {
         bottom: 20.0,
         child: FloatingActionButton(
           onPressed: () {
-            // Navigator.of(context).push(MaterialPageRoute(
-            //     builder: (BuildContext context) => AddTestimony()));
+            Navigator.of(context).push(MaterialPageRoute(
+                builder: (BuildContext context) => AddTestimony()));
           },
           backgroundColor: Colors.white,
           child: Icon(

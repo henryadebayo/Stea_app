@@ -47,6 +47,4 @@ TestimonyVeiwModel(){
    }
    setLoading(false);
  }
-
 }
-
