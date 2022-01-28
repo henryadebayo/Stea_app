@@ -9,6 +9,8 @@ import 'package:stea/widgets/buton.dart';
 import 'package:stea/widgets/const.dart';
 
 class AddTestimony extends StatefulWidget {
+  AddTestimony();
+
   @override
   _AddTestimonyState createState() => _AddTestimonyState();
 
@@ -26,9 +28,7 @@ class _AddTestimonyState extends State<AddTestimony> {
 
   @override
   Widget build(BuildContext context) {
-    return ScopedModel<TestimonyScopedModel>(
-      model: testimonyScopedModel,
-      child: Scaffold(
+    return Scaffold(
         key: mainKey,
         appBar: AppBar(
           automaticallyImplyLeading: false,
@@ -70,7 +70,7 @@ class _AddTestimonyState extends State<AddTestimony> {
                           ),
                           maxLength: 25,
                           onSaved: (value) {
-                             = value;
+                            value = value;
                           },
                           validator: (String value) {
                             if (value.isEmpty) {
@@ -100,7 +100,7 @@ class _AddTestimonyState extends State<AddTestimony> {
                           maxLines: 10,
                           maxLength: 2000,
                           onSaved: (String value) {
-                            testimonys.details = value;
+                            details = value;
                           },
                           validator: (String value) {
                             if (value.isEmpty) {
@@ -118,67 +118,50 @@ class _AddTestimonyState extends State<AddTestimony> {
                     .size
                     .height / 50),
 
-                ScopedModelDescendant<TestimonyScopedModel>(
-                    builder: (BuildContext context, Widget child,
-                        TestimonyScopedModel model) {
-                      return GestureDetector(
+               GestureDetector(
                         onTap:(){
-                          if(model.isLoading){
-                            showLoadingIndicator(context);
-                            onPressed(testimonys);
-                            var fetchTestimonies = testimonyScopedModel.fetchTestimonies;
-                          }
                         },
                         child: RoundWhiteButton(
 
                           onTap:(){
-                            if(model.isLoading){
-                             showLoadingIndicator(context);
-                            onPressed(testimonys);
-                            }
-                            showLoadingIndicator(context);
-                            onPressed(testimonys);
                           },
                           label: "Save",
                           width: 500.0,
                           height: 60.0,
                         ),
-                      );
-                    }
-                ),
+                      ),
               ],
             ),
           ),
         ),
-      ),
     );
   }
 
  void onPressed(TestimonyModel testimonyModel) async {
     if (formkey.currentState.validate()) {
       formkey.currentState.save();
-     bool value = await testimonyScopedModel.sendTes(testimonys);
-      if(value){
-       Navigator.of(context).pop();
-       SnackBar snackBar = SnackBar(
-          backgroundColor: KdarkBlueColour,
-          content: Text("Testimony uploaded successfully"),
-          duration: Duration(
-            seconds: 2
-          ),
-        );
-       mainKey.currentState.showSnackBar(snackBar);
-      }else if(value!= true){
-        Navigator.of(context).pop();
-        SnackBar snackBar = SnackBar(
-          backgroundColor: KdarkBlueColour,
-          content: Text("Failed to upload Testimony", style:TextStyle(color: Colors.redAccent),),
-          duration: Duration(
-              seconds: 2
-          ),
-        );
-        mainKey.currentState.showSnackBar(snackBar);
-      }
+    // bool value = await testimonyScopedModel.sendTes(testimonys);
+    //   if(onPressed()){
+    //    Navigator.of(context).pop();
+    //    SnackBar snackBar = SnackBar(
+    //       backgroundColor: KdarkBlueColour,
+    //       content: Text("Testimony uploaded successfully"),
+    //       duration: Duration(
+    //         seconds: 2
+    //       ),
+    //     );
+    //    mainKey.currentState.showSnackBar(snackBar);
+    //   }else if(value!= true){
+    //     Navigator.of(context).pop();
+    //     SnackBar snackBar = SnackBar(
+    //       backgroundColor: KdarkBlueColour,
+    //       content: Text("Failed to upload Testimony", style:TextStyle(color: Colors.redAccent),),
+    //       duration: Duration(
+    //           seconds: 2
+    //       ),
+    //     );
+    //     mainKey.currentState.showSnackBar(snackBar);
+    //   }
     }
   }
 

@@ -10,6 +10,9 @@
 // import 'package:stea/widgets/testimonyItem.dart';
 
 
+import 'dart:html';
+import 'dart:js';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -28,7 +31,7 @@ class TestimonyPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    TestimonyVeiwModel testimonyVeiwModel = context.watch<TestimonyVeiwModel>();
+TestimonyVeiwModel testimonyVeiwModel = context.watch<TestimonyVeiwModel>();
     return Scaffold(
         appBar: AppBar(
           centerTitle: true,
