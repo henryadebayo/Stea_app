@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:io';
 
 import 'package:flutter/material.dart';
@@ -13,19 +14,11 @@ class TestimonyService {
       var url = Uri.parse(TESTIMONY_URL);
       var response = await http.get(url);
       if(response.statusCode == 200){
-      var responseData = testimonyModelFromJson(response.body);
-        responseData.forEach((String id, dynamic testimonyPayLoad ){
-          TestimonyModel testimonies = TestimonyModel(
-              id: id,
-              name: testimonyPayLoad["name"],
-              details: testimonyPayLoad["details"]
-          );
-        });
-     //return Success(response: );
+     return Success(response:testimonyModelFromJson(response.body));
       }
-      return Failure(code:HTTPEXCEPTION, errorresponse: "invalid response");
+      return Failure(code:HTTPEXCEPTION, errorResponse: "invalid response");
     }on HttpException{
-      return Failure(code:NO_INTERNET, errorresponse: "No Internet Connection");
+      return Failure(code:NO_INTERNET, errorResponse: "No Internet Connection");
     }
     catch(e){
       //jdjlb

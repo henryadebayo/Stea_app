@@ -12,7 +12,7 @@ class TestimonyModel {
     this.name,
   });
 
- String id;
+  String id;
   String details;
   String name;
 

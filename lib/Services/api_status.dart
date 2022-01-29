@@ -8,8 +8,8 @@ class Success{
 
 class Failure{
   int code;
-  Object errorresponse;
-  Failure({this.code,this.errorresponse});
+  Object errorResponse;
+  Failure({this.code,this.errorResponse});
 }
 
 class TestimonyError {
