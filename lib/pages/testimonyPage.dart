@@ -9,10 +9,6 @@
 // import 'package:stea/widgets/const.dart';
 // import 'package:stea/widgets/testimonyItem.dart';
 
-
-import 'dart:html';
-import 'dart:js';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -26,11 +22,13 @@ import 'package:stea/widgets/testimonyItem.dart';
 
 import 'AddTestimonyPage.dart';
 
+
+
 class TestimonyPage extends StatelessWidget {
-
-
+  BuildContext _context;
   @override
   Widget build(BuildContext context) {
+    this._context = context;
 TestimonyVeiwModel testimonyVeiwModel = context.watch<TestimonyVeiwModel>();
     return Scaffold(
         appBar: AppBar(
@@ -54,6 +52,8 @@ TestimonyVeiwModel testimonyVeiwModel = context.watch<TestimonyVeiwModel>();
         children:[
           Center( child: AlertDialog(
       content: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+      crossAxisAlignment: CrossAxisAlignment.center,
       children: [
       SpinKitCubeGrid(
       color: Colors.blueAccent,
@@ -103,7 +103,7 @@ TestimonyVeiwModel testimonyVeiwModel = context.watch<TestimonyVeiwModel>();
         bottom: 20.0,
         child: FloatingActionButton(
           onPressed: () {
-            Navigator.of(context).push(MaterialPageRoute(
+            Navigator.of(_context).push(MaterialPageRoute(
                 builder: (BuildContext context) => AddTestimony()));
           },
           backgroundColor: Colors.white,
