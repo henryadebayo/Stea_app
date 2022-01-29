@@ -8,38 +8,46 @@ String testimonyModelToJson(TestimonyModel data) => json.encode(data.toJson());
 class TestimonyModel {
   TestimonyModel({
     this.id,
-  });
-
-  Id id;
-
-  factory TestimonyModel.fromJson(Map<String, dynamic> json) => TestimonyModel(
-    id: Id.fromJson(json["id"]),
-  );
-
-  Map<String, dynamic> toJson() => {
-    "id": id.toJson(),
-  };
-}
-
-class Id {
-  Id({
     this.details,
     this.name,
   });
 
+ String id;
   String details;
   String name;
 
-  factory Id.fromJson(Map<String, dynamic> json) => Id(
+  factory TestimonyModel.fromJson(Map<String, dynamic> json) => TestimonyModel(
+    id: json["id"],
     details: json["details"],
     name: json["name"],
   );
 
   Map<String, dynamic> toJson() => {
+    "id": id,
     "details": details,
     "name": name,
   };
 }
+//
+// class Id {
+//   Id({
+//     this.details,
+//     this.name,
+//   });
+//
+//   String details;
+//   String name;
+//
+//   factory Id.fromJson(Map<String, dynamic> json) => Id(
+//     details: json["details"],
+//     name: json["name"],
+//   );
+//
+//   Map<String, dynamic> toJson() => {
+//     "details": details,
+//     "name": name,
+//   };
+// }
 
 
 

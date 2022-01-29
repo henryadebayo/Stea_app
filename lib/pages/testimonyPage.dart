@@ -49,13 +49,17 @@ TestimonyVeiwModel testimonyVeiwModel = context.watch<TestimonyVeiwModel>();
   _ui(TestimonyVeiwModel testimonyVeiwModel){
     if(testimonyVeiwModel.loading){
       return Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
         children:[
           Center( child: AlertDialog(
+
       content: Row(
         mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
       SpinKitCubeGrid(
+        duration: Duration(milliseconds: 1200),
       color: Colors.blueAccent,
         size: 25.0,
       ),
@@ -87,8 +91,8 @@ TestimonyVeiwModel testimonyVeiwModel = context.watch<TestimonyVeiwModel>();
                     child: Column(
                       children: [
                         testimonyItem(
-                          testifyerName: testimonyModel.id.name,
-                          testifyerText: testimonyModel.id.details,
+                          testifyerName: testimonyModel.name,
+                          testifyerText: testimonyModel.details,
                         ),
                         SizedBox(height: 10.0.h),
                       ],

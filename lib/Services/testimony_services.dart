@@ -13,7 +13,15 @@ class TestimonyService {
       var url = Uri.parse(TESTIMONY_URL);
       var response = await http.get(url);
       if(response.statusCode == 200){
-        return Success(response: testimonyModelFromJson(response.body));
+      var responseData = testimonyModelFromJson(response.body);
+        responseData.forEach((String id, dynamic testimonyPayLoad ){
+          TestimonyModel testimonies = TestimonyModel(
+              id: id,
+              name: testimonyPayLoad["name"],
+              details: testimonyPayLoad["details"]
+          );
+        });
+     //return Success(response: );
       }
       return Failure(code:HTTPEXCEPTION, errorresponse: "invalid response");
     }on HttpException{
