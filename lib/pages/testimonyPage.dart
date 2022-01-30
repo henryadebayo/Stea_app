@@ -29,6 +29,7 @@ class TestimonyPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     this._context = context;
+    TestimonyService testimonyService = TestimonyService();
 TestimonyVeiwModel testimonyVeiwModel = context.watch<TestimonyVeiwModel>();
     return Scaffold(
         appBar: AppBar(
@@ -39,10 +40,15 @@ TestimonyVeiwModel testimonyVeiwModel = context.watch<TestimonyVeiwModel>();
             child: Text("Testimony"),
           ),
         ),
-        body: Container(
+        body:  Container(
 
-          child:_ui(testimonyVeiwModel),
-        ),
+            child:
+    // RefreshIndicator(
+    // onRefresh:testimonyVeiwModel.getTestimony,
+    // child:
+  _ui(testimonyVeiwModel),
+          ),
+        //),
           );
   }
 
@@ -52,14 +58,15 @@ TestimonyVeiwModel testimonyVeiwModel = context.watch<TestimonyVeiwModel>();
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         children:[
-          Center( child: AlertDialog(
+          Center( child:
+          AlertDialog(
 
       content: Row(
         mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
       SpinKitCubeGrid(
-        duration: Duration(milliseconds: 1200),
+        //duration: Duration(milliseconds: 1200),
       color: Colors.blueAccent,
         size: 25.0,
       ),
@@ -72,35 +79,47 @@ TestimonyVeiwModel testimonyVeiwModel = context.watch<TestimonyVeiwModel>();
         ],
       );
     }if(testimonyVeiwModel.testimonyError != null){
-      return Container();
+      return Container(
+        child:  AlertDialog(
+
+          content: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              SizedBox(width: 16,),
+              Text("No Testimony to Display..."),
+            ],
+          ),
+        ),
+      );
     }
     return Stack( children: [
 
       Padding(
         padding: EdgeInsets.only(
             left: 5.0.w, right: 5.0.w, top: 10.0.h),
-        child:
-        ListView.builder(
-            scrollDirection: Axis.vertical,
-            itemCount: testimonyVeiwModel.testimonyModel.length ,
-            itemBuilder: (context, index) {
-              TestimonyModel testimonyModel = testimonyVeiwModel.testimonyModel[index];
-              return Column(
-                children: [
-                  Container(
-                    child: Column(
-                      children: [
-                        testimonyItem(
-                          testifyerName: testimonyModel.name,
-                          testifyerText: testimonyModel.details,
-                        ),
-                        SizedBox(height: 10.0.h),
-                      ],
+        child: ListView.builder(
+              scrollDirection: Axis.vertical,
+              itemCount: testimonyVeiwModel.testimonyModel.length ,
+              itemBuilder: (context, index) {
+               // TestimonyModel testimonyModel = testimonyVeiwModel.testimonyModel as TestimonyModel;
+                TestimonyVeiwModel testimonyViewModel;
+                return Column(
+                  children: [
+                    Container(
+                      child: Column(
+                        children: [
+                          testimonyItem(
+                            testifyerName: testimonyViewModel.testimonyModel[index].name,
+                            testifyerText: testimonyViewModel.testimonyModel[index].details,
+                          ),
+                          SizedBox(height: 10.0.h),
+                        ],
+                      ),
                     ),
-                  ),
-                ],
-              );
-            }),
+                  ],
+                );
+              }),
       ),
       Positioned(
         right: 20.0,

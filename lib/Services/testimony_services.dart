@@ -9,12 +9,28 @@ import 'package:http/http.dart'as http;
 
 
 class TestimonyService {
+
+
+
   static Future<Object> getTestimonies()async{
     try{
       var url = Uri.parse(TESTIMONY_URL);
       var response = await http.get(url);
       if(response.statusCode == 200){
-     return Success(response:testimonyModelFromJson(response.body));
+        final Map<String, dynamic > testimonyPayload = jsonDecode(response.body);
+        print("there are ${testimonyPayload.length} of testimonies in the DB and here are they ${testimonyPayload as List}");
+        List<TestimonyModel> test = [];
+        testimonyPayload.forEach((String id, dynamic payLoadData) {
+          TestimonyModel _testimonies = TestimonyModel(
+            id: payLoadData["id"],
+            name: payLoadData["name"],
+            details: payLoadData["details"],
+          );
+         test.add(_testimonies);
+         print(_testimonies);
+        });
+
+     return Success(response:test);
       }
       return Failure(code:HTTPEXCEPTION, errorResponse: "invalid response");
     }on HttpException{

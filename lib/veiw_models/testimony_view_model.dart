@@ -36,15 +36,7 @@ TestimonyVeiwModel(){
    var response = await TestimonyService
    .getTestimonies();
    if(response is Success){
-     final Map<String, dynamic > testimonyPayload = response.response;
-     testimonyPayload.forEach((String id, dynamic payLoadData) {
-       TestimonyModel testimonies = TestimonyModel(
-         id: id,
-         name: payLoadData["name"],
-         details: payLoadData["details"],
-       );
-       setTestimonyModel(testimonies as List<TestimonyModel>);
-     });
+     setTestimonyModel(response.response);
    }
    if(response is Failure){
      TestimonyError testimonyError = TestimonyError(
