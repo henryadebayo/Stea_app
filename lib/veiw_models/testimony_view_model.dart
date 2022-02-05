@@ -31,7 +31,7 @@ TestimonyVeiwModel(){
   }
 
 
- getTestimony()async{
+Future getTestimony()async{
    setLoading(true);
    var response = await TestimonyService
    .getTestimonies();

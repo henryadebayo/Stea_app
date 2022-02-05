@@ -18,8 +18,8 @@ class TestimonyService {
       var response = await http.get(url);
       if(response.statusCode == 200){
         final Map<String, dynamic > testimonyPayload = jsonDecode(response.body);
-        print("there are ${testimonyPayload.length} of testimonies in the DB and here are they ${testimonyPayload as List}");
         List<TestimonyModel> test = [];
+        var testt = test.reversed;
         testimonyPayload.forEach((String id, dynamic payLoadData) {
           TestimonyModel _testimonies = TestimonyModel(
             id: payLoadData["id"],
@@ -27,10 +27,9 @@ class TestimonyService {
             details: payLoadData["details"],
           );
          test.add(_testimonies);
-         print(_testimonies);
         });
 
-     return Success(response:test);
+     return Success(response:testt.toList());
       }
       return Failure(code:HTTPEXCEPTION, errorResponse: "invalid response");
     }on HttpException{

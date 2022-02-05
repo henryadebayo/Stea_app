@@ -43,12 +43,12 @@ TestimonyVeiwModel testimonyVeiwModel = context.watch<TestimonyVeiwModel>();
         body:  Container(
 
             child:
-    // RefreshIndicator(
-    // onRefresh:testimonyVeiwModel.getTestimony,
-    // child:
+    RefreshIndicator(
+    onRefresh:testimonyVeiwModel.getTestimony,
+    child:
   _ui(testimonyVeiwModel),
           ),
-        //),
+        ),
           );
   }
 
@@ -100,18 +100,16 @@ TestimonyVeiwModel testimonyVeiwModel = context.watch<TestimonyVeiwModel>();
             left: 5.0.w, right: 5.0.w, top: 10.0.h),
         child: ListView.builder(
               scrollDirection: Axis.vertical,
-              itemCount: testimonyVeiwModel.testimonyModel.length ,
+              itemCount: testimonyVeiwModel.testimonyModel.length,
               itemBuilder: (context, index) {
-               // TestimonyModel testimonyModel = testimonyVeiwModel.testimonyModel as TestimonyModel;
-                TestimonyVeiwModel testimonyViewModel;
                 return Column(
                   children: [
                     Container(
                       child: Column(
                         children: [
                           testimonyItem(
-                            testifyerName: testimonyViewModel.testimonyModel[index].name,
-                            testifyerText: testimonyViewModel.testimonyModel[index].details,
+                            testifyerName:testimonyVeiwModel.testimonyModel[index].name,
+                            testifyerText:testimonyVeiwModel.testimonyModel[index].details
                           ),
                           SizedBox(height: 10.0.h),
                         ],
