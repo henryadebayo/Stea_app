@@ -125,9 +125,7 @@ class _AddTestimonyState extends State<AddTestimony> {
                 onTap: () {},
                 child: RoundWhiteButton(
                   onTap: () {
-                    onPressed(testimonyModel);
-                    testimonyVeiwModel.loading ?
-                      showLoadingIndicator(context) : testimonyVeiwModel.testimonyPostedResponse;
+                    onPressed();
 
                   },
                   label: "Save",
@@ -142,10 +140,12 @@ class _AddTestimonyState extends State<AddTestimony> {
     );
   }
 
-  void onPressed(TestimonyModel testimonyModel) async {
+  void onPressed() async {
     if (formkey.currentState.validate()) {
       formkey.currentState.save();
-      testimonyVeiwModel.postTestimoy(testimonyModel);
+      testimonyVeiwModel.postTestimony(testimonyModel);
+      // testimonyVeiwModel.loadingg ?
+      // showLoadingIndicator(context) : testimonyVeiwModel.testimonyPostedResponse;
       // bool value = await testimonyScopedModel.sendTes(testimonys);
       // if (testimonyVeiwModel.loading) {
       //   showLoadingIndicator();

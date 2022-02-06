@@ -46,7 +46,7 @@ class TestimonyService {
 
     try {
       final Map<String, dynamic> tdata = {
-          "name": testimony.name,
+          "name":testimony.name,
           "details": testimony.details,
         };
 
@@ -65,6 +65,7 @@ class TestimonyService {
         );
       }
     }catch(e){
+      print("${e}");
       //on Exception
     }
 
