@@ -10,6 +10,7 @@ import 'package:stea/widgets/const.dart';
 
 
 class TestimonyService {
+  bool loading;
 
 
 
@@ -42,35 +43,63 @@ class TestimonyService {
   }
 
 
-  static Future<Object> postTestimony(TestimonyModel testimony)async{
+  Future<bool> sendTes(TestimonyModel testimony) async {
+     loading = true;
+     //notifyListeners();
+      try {
 
-    try {
-      final Map<String, dynamic> tdata = {
-          "name":testimony.name,
+        final Map<String, dynamic> tdata = {
+          "name": testimony.name,
           "details": testimony.details,
         };
+        http.Response response = await http.post(Uri.parse(TESTIMONY_URL),
+            body: json.encode(tdata));
+        print(response.statusCode);
+        print(response.body);
+        loading = false;
+        //notifyListeners();
+        return Future.value(true);
+      } catch (e) {
+      loading=false;
+        //notifyListeners();
+        print("connection error $e");
+        return Future.value(false);
 
-      var Url = Uri.parse(TESTIMONY_URL);
-      var response = await http.post(Url);
-      body: json.encode(tdata);
-      if(response.statusCode == 200){
-        return Success(response:
-                SnackBar(
-                  backgroundColor: KdarkBlueColour,
-                  content: Text("Testimony uploaded successfully"),
-                  duration: Duration(
-                    seconds: 2
-                  ),
-                ),
-        );
       }
-    }catch(e){
-      print("${e}");
-      //on Exception
     }
 
-
-  }
+//
+//    Future<Object> postTestimony(TestimonyModel testimony)async{
+//     loading = true;
+//
+//     try {
+//       final Map<String, dynamic> tdata = {
+//           "name":testimony.name,
+//           "details": testimony.details,
+//         };
+//
+//       var Url = Uri.parse(TESTIMONY_URL);
+//       var response = await http.post(Url);
+//       body: json.encode(tdata);
+//       if(response.statusCode == 200){
+//         loading = false;
+//         return Success(response:
+//                 SnackBar(
+//                   backgroundColor: KdarkBlueColour,
+//                   content: Text("Testimony uploaded successfully"),
+//                   duration: Duration(
+//                     seconds: 2
+//                   ),
+//                 ),
+//         );
+//       }
+//     }catch(e){
+//       print("${e}");
+//       //on Exception
+//     }
+// return null;
+//
+//   }
 
 
 }

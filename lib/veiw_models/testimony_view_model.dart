@@ -4,6 +4,7 @@ import 'package:stea/Services/testimony_services.dart';
 import 'package:stea/models/testimonyModel.dart';
 
 class TestimonyVeiwModel extends ChangeNotifier{
+  TestimonyService testimonyService;
 
   bool _loading = false;
  List<TestimonyModel> _testimonyModel = [];
@@ -59,20 +60,20 @@ Future getTestimony()async{
    setLoading(false);
  }
 
- Future postTestimony(TestimonyModel testimonyModel)async{
-   setLoadingg(true);
-   var response = await TestimonyService.postTestimony(testimonyModel);
-   if(response is Success){
-     setTestimonyPosted(response.response as Widget);
-   }
-   if(response is Failure){
-     TestimonyError testimonyError = TestimonyError(
-       code: response.code,
-       message:response.errorResponse,
-     );
-     setTestimonyError(testimonyError);
-   }
-   setLoadingg(false);
- }
+ // Future postTestimony(TestimonyModel testimonyModel)async{
+ //   setLoadingg(true);
+ //   var response = await testimonyService.postTestimony(testimonyModel);
+ //   if(response is Success){
+ //     setTestimonyPosted(response.response as Widget);
+ //   }
+ //   if(response is Failure){
+ //     TestimonyError testimonyError = TestimonyError(
+ //       code: response.code,
+ //       message:response.errorResponse,
+ //     );
+ //     setTestimonyError(testimonyError);
+ //   }
+ //   setLoadingg(false);
+ // }
 
 }

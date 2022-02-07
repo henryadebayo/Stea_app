@@ -1,16 +1,12 @@
-import 'dart:convert';
-import 'package:provider/provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:scoped_model/scoped_model.dart';
-import 'package:stea/Services/send_receive_testimonies.dart';
+import 'package:stea/Services/testimony_services.dart';
 import 'package:stea/models/testimonyModel.dart';
 import 'package:stea/veiw_models/testimony_view_model.dart';
 import 'package:stea/widgets/buton.dart';
 import 'package:stea/widgets/const.dart';
 
 class AddTestimony extends StatefulWidget {
-  AddTestimony();
 
   @override
   _AddTestimonyState createState() => _AddTestimonyState();
@@ -21,7 +17,8 @@ class _AddTestimonyState extends State<AddTestimony> {
 
   String name;
   String details;
-  TestimonyModel testimonyModel;
+  TestimonyModel testimony;
+  TestimonyService testimonyService;
   TestimonyVeiwModel testimonyVeiwModel;
 
 
@@ -59,11 +56,29 @@ class _AddTestimonyState extends State<AddTestimony> {
                   key: formkey,
                   child:
                   Column(children: [
+                    // TextFormField(
+                    //     decoration: InputDecoration(
+                    //         labelText: "Name",
+                    //         focusColor: Colors.red,
+                    //         border: OutlineInputBorder(
+                    //           borderRadius: BorderRadius.circular(20.0),
+                    //         )
+                    //     ),
+                    //     maxLength: 25,
+                    //     onSaved: (String value) {
+                    //       print(value);
+                    //       testimony.name = value;
+                    //     },
+                    //     validator: (String value) {
+                    //       if (value.isEmpty) {
+                    //         return "please input your name";
+                    //       }
+                    //       return null;
+                    //     }
+                    // ),
                     TextFormField(
-                      //expands: true,
-
                         decoration: InputDecoration(
-                            labelText: "Name",
+                            labelText: "name",
                             // hintStyle: TextStyle(),
                             focusColor: Colors.red,
                             border: OutlineInputBorder(
@@ -72,12 +87,13 @@ class _AddTestimonyState extends State<AddTestimony> {
                             )
                         ),
                         maxLength: 25,
-                        onSaved: (value) {
-                          testimonyModel.name = value;
+                        onSaved: (String value) {
+                          print(value);
+                          testimony.name = value;
                         },
                         validator: (String value) {
                           if (value.isEmpty) {
-                            return "please input your name";
+                            return "please input your Testimony text";
                           }
                           return null;
                         }
@@ -103,7 +119,8 @@ class _AddTestimonyState extends State<AddTestimony> {
                         maxLines: 10,
                         maxLength: 2000,
                         onSaved: (String value) {
-                          testimonyModel.details = value;
+                          print(value);
+                          testimony.details = value;
                         },
                         validator: (String value) {
                           if (value.isEmpty) {
@@ -121,17 +138,16 @@ class _AddTestimonyState extends State<AddTestimony> {
                   .size
                   .height / 50),
 
-              GestureDetector(
-                onTap: () {},
-                child: RoundWhiteButton(
-                  onTap: () {
-                    onPressed();
-
-                  },
-                  label: "Save",
-                  width: 500.0,
-                  height: 60.0,
-                ),
+              RoundWhiteButton(
+                onTap: () {
+                 if (formkey.currentState.validate()){
+                   formkey.currentState.save();
+                   testimonyService.sendTes(testimony);
+                 }
+                },
+                label: "Save",
+                width: 500.0,
+                height: 60.0,
               ),
             ],
           ),
@@ -143,9 +159,15 @@ class _AddTestimonyState extends State<AddTestimony> {
   void onPressed() async {
     if (formkey.currentState.validate()) {
       formkey.currentState.save();
-      testimonyVeiwModel.postTestimony(testimonyModel);
-      // testimonyVeiwModel.loadingg ?
-      // showLoadingIndicator(context) : testimonyVeiwModel.testimonyPostedResponse;
+      testimonyService.sendTes(testimony);
+      testimonyService.loading ?
+      showLoadingIndicator(context) :  SnackBar(
+        backgroundColor: KdarkBlueColour,
+        content: Text("Testimony uploaded successfully"),
+        duration: Duration(
+            seconds: 2
+        ),
+      );
       // bool value = await testimonyScopedModel.sendTes(testimonys);
       // if (testimonyVeiwModel.loading) {
       //   showLoadingIndicator();
