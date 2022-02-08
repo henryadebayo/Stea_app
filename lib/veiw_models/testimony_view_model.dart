@@ -10,10 +10,12 @@ class TestimonyVeiwModel extends ChangeNotifier{
  List<TestimonyModel> _testimonyModel = [];
  TestimonyError _testimonyError;
  Widget _testimonyPosted;
+ String _details;
+ String _name;
 
 TestimonyVeiwModel(){
   getTestimony();
- // postTestimony();
+  //postTestimony(name, details);
 }
 
  bool get loading => _loading;
@@ -21,6 +23,9 @@ TestimonyVeiwModel(){
  List<TestimonyModel> get testimonyModel => _testimonyModel;
  TestimonyError get testimonyError => _testimonyError;
  Widget get testimonyPostedResponse => _testimonyPosted;
+
+  // get details => _details;
+  // get name => _name;
 
  setLoading(bool loading)async{
    _loading = loading;
@@ -60,9 +65,9 @@ Future getTestimony()async{
    setLoading(false);
  }
 
- // Future postTestimony(TestimonyModel testimonyModel)async{
+ // Future postTestimony(String name, details)async{
  //   setLoadingg(true);
- //   var response = await testimonyService.postTestimony(testimonyModel);
+ //   var response = await testimonyService.sendTes(name, details);
  //   if(response is Success){
  //     setTestimonyPosted(response.response as Widget);
  //   }

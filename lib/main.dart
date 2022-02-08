@@ -6,6 +6,7 @@ import 'package:provider/provider.dart';
 import 'package:scoped_model/scoped_model.dart';
 import 'package:stea/Services/send_receive_testimonies.dart';
 import 'package:stea/data/uploadImage.dart';
+import 'package:stea/pages/AddTestimonyPage.dart';
 import 'package:stea/pages/home.dart';
 import 'package:stea/pages/testimonyPage.dart';
 import 'package:stea/veiw_models/testimony_view_model.dart';
@@ -42,8 +43,9 @@ class MyApp extends StatelessWidget {
         ),
         debugShowCheckedModeBanner: false,
         home:
+        AddTestimony(),
         //TestimonyPage(),
-       FunAnimation(),
+       //FunAnimation(),
         //UploadImage(),
         //
         //FunAnimation(),
