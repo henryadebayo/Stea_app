@@ -43,9 +43,9 @@ class MyApp extends StatelessWidget {
         ),
         debugShowCheckedModeBanner: false,
         home:
-        AddTestimony(),
-        //TestimonyPage(),
-       //FunAnimation(),
+        //AddTestimony(),
+        TestimonyPage(),
+      //FunAnimation(),
         //UploadImage(),
         //
         //FunAnimation(),
