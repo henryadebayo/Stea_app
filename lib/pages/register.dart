@@ -67,9 +67,9 @@ class _RegisterPageState extends State<RegisterPage> {
                 InkWell(
                     onTap: onPressed,
                     onDoubleTap: () {
-                      Navigator.of(context).pop();
                       Navigator.of(context).push(MaterialPageRoute(
-                          builder: (BuildContext context) => HomeScreen()));
+                          builder: (BuildContext context) => BottomNavigationWidget()));
+                      //Navigator.of(context).popUntil((route) => false);
                     },
                     child: Container(
                       height: 50.0.h,

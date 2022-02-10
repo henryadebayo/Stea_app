@@ -52,7 +52,7 @@ class _BottomNavigationWidgetState extends State<BottomNavigationWidget> {
           ),
         ],
       ),
-      body: pages[currentTabIndex],
+      body: pages[currentTabIndex],//pages[currentTabIndex],
     );
   }
 }

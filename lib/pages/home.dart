@@ -24,151 +24,167 @@ class _HomeScreenState extends State<HomeScreen> {
 
   final String firstName;
   _HomeScreenState({this.firstName});
+  DateTime pre_backpress = DateTime.now();
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        automaticallyImplyLeading: false,
-        centerTitle: true,
-        backgroundColor: KdarkBlueColour,
-        title: Text(
-          "STEA",
-          style: TextStyle(
-              fontFamily: KfontFamily,
-              letterSpacing: 18.0,
-              fontWeight: FontWeight.bold,
-              fontSize: 20.0.sp),
-        ),
-        actions: <Widget>[
-          buildShoppingCart(),
-          SizedBox(width: 20.0.w),
-        ],
-      ),
-      body: SingleChildScrollView(
-        // scrollDirection: Axis.vertical,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 8.w, vertical: 8.h),
-              child: Column(children: [
-                Text(
-                  "Hi $firstName",
-                  style: TextStyle(
-                    fontFamily: KfontFamily,
-                    fontSize: 15.0.sp,
-                  ),
-                ),
-                Padding(
-                  padding: EdgeInsets.only(left: 8.w),
-                  child: Text(
-                    "Welcome",
-                    style: TextStyle(fontSize: 20.0.sp),
-                  ),
-                ),
-              ]),
-            ),
-            SizedBox(height: 8.0.h),
-            ListView(
-              shrinkWrap: true,
-              //scrollDirection: Axis.vertical,
-              padding: EdgeInsets.only(left: 10.0.w, right: 10.0.w),
-              children: [
-                //  ...List.generate(carouselItems.length, (index) => null)
-
-                // carouselItems.map((e) => CarouselSlider(items:[e],)).toList(),
-                // CarouselSlider(
-                //   scrollDirection: Axis.horizontal,
-                //   height: 180.0.h,
-                //   enlargeCenterPage: true,
-                //   autoPlay: true,
-                //   aspectRatio: 16 / 9,
-                //   autoPlayCurve: Curves.fastOutSlowIn,
-                //   autoPlayAnimationDuration: Duration(milliseconds: 800),
-                //   viewportFraction: 0.8,
-                //   // items:[ CarouselData.carouselItems]
-                // ),
-
-                SizedBox(height: 30.0.h),
-                Text(
-                  "Quick Access.",
-                  style: TextStyle(fontFamily: KfontFamily, fontSize: 20.0.sp),
-                ),
-                SizedBox(
-                  height: 10.0.h,
-                ),
-                quickAccessIcon(),
-                SizedBox(height: 30.0.h),
-                Expanded(
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      Expanded(
-                        child: GestureDetector(
-                          onTap: () {
-                            Navigator.of(context).push(MaterialPageRoute(
-                                builder: (BuildContext context) => AboutUs()));
-                          },
-                          child: Container(
-                            height: 150.0.h,
-                            width: double.infinity.w,
-                            decoration: BoxDecoration(
-                              image: DecorationImage(
-                                image: AssetImage("images/icon2.png"),
-                                fit: BoxFit.cover,
-                              ),
-                              borderRadius: BorderRadius.circular(10.0.r),
-                            ),
-                            child: Center(
-                                child: Text(
-                              "sermons",
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 20.0.sp,
-                              ),
-                            )),
-                          ),
-                        ),
-                      ),
-                      SizedBox(width: 10.0.w),
-                      Expanded(
-                        child: GestureDetector(
-                          onTap: () {
-                            Navigator.of(context).push(MaterialPageRoute(
-                                builder: (BuildContext context) =>
-                                    TestimonyPage()));
-                          },
-                          child: Container(
-                            height: 150.0.h,
-                            width: double.infinity.w,
-                            decoration: BoxDecoration(
-                                image: DecorationImage(
-                                  image: AssetImage("images/icon1.png"),
-                                  fit: BoxFit.cover,
-                                ),
-                                color: Color(0xFF0E3498),
-                                borderRadius: BorderRadius.circular(10.0.r)),
-                            child: Center(
-                                child: Text(
-                              "Prayers",
-                              style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 20.0.sp,
-                                  fontFamily: "GoogleSans"),
-                            )),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                SizedBox(height: 30.0.h),
-              ],
-            ),
+    return WillPopScope(
+      onWillPop: () async{
+        final timegap = DateTime.now().difference(pre_backpress);
+        final cantExit = timegap >= Duration(seconds: 2);
+        pre_backpress = DateTime.now();
+        if(cantExit){
+          //show snackbar
+          final snack = SnackBar(content: Text('Press Back button again to Exit'),duration: Duration(seconds: 2),);
+          ScaffoldMessenger.of(context).showSnackBar(snack);
+          return false;
+        }else{
+          return true;
+        }
+      },
+      child: Scaffold(
+        appBar: AppBar(
+          automaticallyImplyLeading: false,
+          centerTitle: true,
+          backgroundColor: KdarkBlueColour,
+          title: Text(
+            "STEA",
+            style: TextStyle(
+                fontFamily: KfontFamily,
+                letterSpacing: 18.0,
+                fontWeight: FontWeight.bold,
+                fontSize: 20.0.sp),
+          ),
+          actions: <Widget>[
+            buildShoppingCart(),
+            SizedBox(width: 20.0.w),
           ],
         ),
+        body: SingleChildScrollView(
+          // scrollDirection: Axis.vertical,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: 8.w, vertical: 8.h),
+                child: Column(children: [
+                  Text(
+                    "Hi $firstName",
+                    style: TextStyle(
+                      fontFamily: KfontFamily,
+                      fontSize: 15.0.sp,
+                    ),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.only(left: 8.w),
+                    child: Text(
+                      "Welcome",
+                      style: TextStyle(fontSize: 20.0.sp),
+                    ),
+                  ),
+                ]),
+              ),
+              SizedBox(height: 8.0.h),
+              ListView(
+                shrinkWrap: true,
+                //scrollDirection: Axis.vertical,
+                padding: EdgeInsets.only(left: 10.0.w, right: 10.0.w),
+                children: [
+                  //  ...List.generate(carouselItems.length, (index) => null)
+
+                  // carouselItems.map((e) => CarouselSlider(items:[e],)).toList(),
+                  // CarouselSlider(
+                  //   scrollDirection: Axis.horizontal,
+                  //   height: 180.0.h,
+                  //   enlargeCenterPage: true,
+                  //   autoPlay: true,
+                  //   aspectRatio: 16 / 9,
+                  //   autoPlayCurve: Curves.fastOutSlowIn,
+                  //   autoPlayAnimationDuration: Duration(milliseconds: 800),
+                  //   viewportFraction: 0.8,
+                  //   // items:[ CarouselData.carouselItems]
+                  // ),
+
+                  SizedBox(height: 30.0.h),
+                  Text(
+                    "Quick Access.",
+                    style: TextStyle(fontFamily: KfontFamily, fontSize: 20.0.sp),
+                  ),
+                  SizedBox(
+                    height: 10.0.h,
+                  ),
+                  quickAccessIcon(),
+                  SizedBox(height: 30.0.h),
+                  Expanded(
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        Expanded(
+                          child: GestureDetector(
+                            onTap: () {
+                              Navigator.of(context).push(MaterialPageRoute(
+                                  builder: (BuildContext context) => AboutUs()));
+                            },
+                            child: Container(
+                              height: 150.0.h,
+                              width: double.infinity.w,
+                              decoration: BoxDecoration(
+                                image: DecorationImage(
+                                  image: AssetImage("images/icon2.png"),
+                                  fit: BoxFit.cover,
+                                ),
+                                borderRadius: BorderRadius.circular(10.0.r),
+                              ),
+                              child: Center(
+                                  child: Text(
+                                "sermons",
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 20.0.sp,
+                                ),
+                              )),
+                            ),
+                          ),
+                        ),
+                        SizedBox(width: 10.0.w),
+                        Expanded(
+                          child: GestureDetector(
+                            onTap: () {
+                              Navigator.of(context).push(MaterialPageRoute(
+                                  builder: (BuildContext context) =>
+                                      TestimonyPage()));
+                            },
+                            child: Container(
+                              height: 150.0.h,
+                              width: double.infinity.w,
+                              decoration: BoxDecoration(
+                                  image: DecorationImage(
+                                    image: AssetImage("images/icon1.png"),
+                                    fit: BoxFit.cover,
+                                  ),
+                                  color: Color(0xFF0E3498),
+                                  borderRadius: BorderRadius.circular(10.0.r)),
+                              child: Center(
+                                  child: Text(
+                                "Prayers",
+                                style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 20.0.sp,
+                                    fontFamily: "GoogleSans"),
+                              )),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  SizedBox(height: 30.0.h),
+                ],
+              ),
+            ],
+          ),
+        ),
+        //bottomNavigationBar: BottomNavigation(),
       ),
-      //bottomNavigationBar: BottomNavigation(),
     );
   }
 }

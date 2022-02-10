@@ -4,15 +4,15 @@ import 'package:stea/pages/register.dart';
 import 'package:stea/widgets/bottomNavigation.dart';
 import 'welcomePage.dart';
 
-class FunAnimation extends StatefulWidget {
+class SteaAnimation extends StatefulWidget {
 
-  const FunAnimation({Key key,}) : super(key: key);
+  const SteaAnimation({Key key,}) : super(key: key);
 
   @override
-  _FunAnimationState createState() => _FunAnimationState();
+  _SteaAnimationState createState() => _SteaAnimationState();
 }
 
-class _FunAnimationState extends State<FunAnimation>
+class _SteaAnimationState extends State<SteaAnimation>
     with TickerProviderStateMixin {
   Animation animation;
   AnimationController animationController;

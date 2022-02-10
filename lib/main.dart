@@ -3,19 +3,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
-import 'package:scoped_model/scoped_model.dart';
-import 'package:stea/Services/send_receive_testimonies.dart';
-import 'package:stea/data/uploadImage.dart';
-import 'package:stea/pages/AddTestimonyPage.dart';
-import 'package:stea/pages/home.dart';
-import 'package:stea/pages/testimonyPage.dart';
 import 'package:stea/veiw_models/testimony_view_model.dart';
-import 'package:stea/widgets/bottomNavigation.dart';
 import 'package:stea/widgets/const.dart';
 
-import 'pages/funanimation.dart';
-// ignore: unused_import
-import 'pages/welcomePage.dart';
+import 'pages/steaLogoAnimation.dart';
 
 
 void main() async {
@@ -44,8 +35,8 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         home:
         //AddTestimony(),
-        TestimonyPage(),
-      //FunAnimation(),
+        //TestimonyPage(),
+        SteaAnimation(),
         //UploadImage(),
         //
         //FunAnimation(),
