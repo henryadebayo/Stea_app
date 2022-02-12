@@ -29,8 +29,20 @@ class _DevotionalsState extends State<Devotionals> {
             children:[
               SearchField(searchTxt: "search for Devotional",),
               SizedBox(height:20.0.h),
-              DevotionalItem(),
-          ],),
+             // DevotionalItem(),
+           GridView.count(
+             crossAxisCount: 2,
+             primary: false,
+             crossAxisSpacing: 10,
+             mainAxisSpacing: 10,
+             children: <Widget>[
+               DevotionalItem(),
+               DevotionalItem(),
+               DevotionalItem(),
+               DevotionalItem(),
+             ],
+           ),
+        ],),
         ),
       ),
     );
