@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 import 'package:stea/pages/devotionals.dart';
+import 'package:stea/pages/testt.dart';
 import 'package:stea/veiw_models/testimony_view_model.dart';
 import 'package:stea/widgets/const.dart';
 import 'package:stea/widgets/devotionalsItem.dart';
@@ -36,10 +37,11 @@ class MyApp extends StatelessWidget {
         ),
         debugShowCheckedModeBanner: false,
         home:
-      Devotionals(),
+     // Devotionals(),
         //AddTestimony(),
-        //TestimonyPage(),
-    // SteaAnimation(),
+       //TestimonyPage(),
+       // TestGrid(),
+        SteaAnimation(),
         //UploadImage(),
         //
         //FunAnimation(),

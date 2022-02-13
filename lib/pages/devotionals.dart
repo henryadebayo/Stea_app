@@ -24,26 +24,43 @@ class _DevotionalsState extends State<Devotionals> {
       ),
       body: Padding(
         padding: const EdgeInsets.only(left: 8.0, right: 10.0, top: 20.0, bottom: 20.0),
-        child: SingleChildScrollView(
-          child: Column(
-            children:[
-              SearchField(searchTxt: "search for Devotional",),
-              SizedBox(height:20.0.h),
-             // DevotionalItem(),
-           GridView.count(
-             crossAxisCount: 2,
-             primary: false,
-             crossAxisSpacing: 10,
-             mainAxisSpacing: 10,
-             children: <Widget>[
-               DevotionalItem(),
-               DevotionalItem(),
-               DevotionalItem(),
-               DevotionalItem(),
-             ],
+        child:
+           // SearchField(searchTxt: "search for Devotional",),
+            //SizedBox(height:20.0.h),
+           // DevotionalItem(),
+         GridView.count(
+           crossAxisCount: 2,
+           primary: false,
+           crossAxisSpacing: 10,
+           mainAxisSpacing: 10,
+           children: <Widget>[
+         Container(
+         height: 40.0.h,
+           width: 40.0.w,
+           decoration: BoxDecoration(
+               borderRadius: BorderRadius.only(
+                 topRight:Radius.circular(20.0),
+                 topLeft:Radius.circular(20.0),
+               ),
+               color: Colors.blueAccent
            ),
-        ],),
-        ),
+         ),
+        Container(
+          height: 40.0.h,
+          width: 40.0.w,
+          decoration: BoxDecoration(
+              borderRadius: BorderRadius.only(
+                topRight:Radius.circular(20.0),
+                topLeft:Radius.circular(20.0),
+              ),
+              color: Colors.blueAccent
+          ),
+        ),  //DevotionalItem(),
+             // DevotionalItem(),
+             // DevotionalItem(),
+             // DevotionalItem(),
+           ],
+         ),
       ),
     );
   }
