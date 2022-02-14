@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -15,8 +17,18 @@ class DevotionalItem extends StatelessWidget {
         color: Colors.blueAccent
       ),
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Container(),
+          Material(
+            elevation: 5.0,
+            child: Image(
+             image: AssetImage('images/devotionalsmock.jpg'),
+            ),
+          ),
+          Padding(
+            padding: EdgeInsets.only(left: 8.0.w, top: 8.0.h),
+            child: Text("The Memory Book", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold)),
+          ),
         ],
       ),
     );

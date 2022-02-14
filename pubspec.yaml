@@ -36,9 +36,9 @@ dependencies:
 #  cloud_firestore: ^0.12.9+4
   animated_bottom_navigation_bar: ^0.3.2
   provider: ^6.0.2
-  file_picker: ^4.3.3
-  path: ^1.8.0
-  path_provider: ^2.0.9
+#  file_picker: ^4.3.3
+#  path: ^1.8.0
+#  path_provider: ^2.0.9
 
 dev_dependencies:
   flutter_test:

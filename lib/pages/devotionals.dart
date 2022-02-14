@@ -34,24 +34,6 @@ class _DevotionalsState extends State<Devotionals> {
            crossAxisSpacing: 10,
            mainAxisSpacing: 10,
            children: <Widget>[
-         Container(
-         height: 40.0.h,
-           width: 40.0.w,
-           decoration: BoxDecoration(
-               borderRadius: BorderRadius.circular(
-                 20.0.r,),
-               color: Colors.blueAccent
-           ),
-         ),
-        Container(
-          height: 40.0.h,
-          width: 40.0.w,
-          decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(
-             20.0.r,),
-              color: Colors.blueAccent
-          ),
-        ),
              DevotionalItem(),
              DevotionalItem(),
              DevotionalItem(),
