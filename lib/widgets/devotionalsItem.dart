@@ -10,11 +10,14 @@ class DevotionalItem extends StatelessWidget {
         height: 40.0.h,
             width: 40.0.w,
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.only(
-          topRight:Radius.circular(20.0),
-          topLeft:Radius.circular(20.0),
-        ),
+          borderRadius: BorderRadius.circular(
+            20.0.r,),
         color: Colors.blueAccent
+      ),
+      child: Column(
+        children: [
+          Container(),
+        ],
       ),
     );
   }

@@ -38,10 +38,8 @@ class _DevotionalsState extends State<Devotionals> {
          height: 40.0.h,
            width: 40.0.w,
            decoration: BoxDecoration(
-               borderRadius: BorderRadius.only(
-                 topRight:Radius.circular(20.0),
-                 topLeft:Radius.circular(20.0),
-               ),
+               borderRadius: BorderRadius.circular(
+                 20.0.r,),
                color: Colors.blueAccent
            ),
          ),
@@ -49,10 +47,8 @@ class _DevotionalsState extends State<Devotionals> {
           height: 40.0.h,
           width: 40.0.w,
           decoration: BoxDecoration(
-              borderRadius: BorderRadius.only(
-                topRight:Radius.circular(20.0),
-                topLeft:Radius.circular(20.0),
-              ),
+              borderRadius: BorderRadius.circular(
+             20.0.r,),
               color: Colors.blueAccent
           ),
         ),
