@@ -29,15 +29,12 @@ class DevotionalItem extends StatelessWidget {
             padding: EdgeInsets.only(left: 8.0.w, top: 8.0.h),
             child: Text("The Memory Book", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold)),
           ),
+          Padding(
+            padding: EdgeInsets.only(left: 8.0.w,),
+            child: Text("The Memory Book can kdj jdvjvhidh jnjdvus ", style: TextStyle(color: Colors.white, fontSize: 10.0.sp)),
+          ),
         ],
       ),
     );
   }
 }
-
-//
-// Row(
-// children: [
-// Container(),
-// ],
-// );
