@@ -1,3 +1,4 @@
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -25,6 +26,12 @@ class _HomeScreenState extends State<HomeScreen> {
   final String firstName;
   _HomeScreenState({this.firstName});
   DateTime pre_backpress = DateTime.now();
+  List<Widget> Images = [
+    Image(image: AssetImage("images/stea.jpg"), fit: BoxFit.cover, height: 120.0.h, width: 300.0.w,),
+    Image(image: AssetImage("images/stea2.jpg"), fit: BoxFit.cover , height: 120.0.h, width: 300.0.w,),
+    Image(image: AssetImage("images/stea3.jpg"), fit: BoxFit.cover , height: 120.0.h, width: 300.0.w,),
+    Image(image: AssetImage("images/stea4.jpg"), fit: BoxFit.cover , height: 120.0.h, width: 300.0.w,),
+  ];
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
@@ -90,20 +97,19 @@ class _HomeScreenState extends State<HomeScreen> {
                 padding: EdgeInsets.only(left: 10.0.w, right: 10.0.w),
                 children: [
                   //  ...List.generate(carouselItems.length, (index) => null)
-
+                  //
                   // carouselItems.map((e) => CarouselSlider(items:[e],)).toList(),
-                  // CarouselSlider(
-                  //   scrollDirection: Axis.horizontal,
-                  //   height: 180.0.h,
-                  //   enlargeCenterPage: true,
-                  //   autoPlay: true,
-                  //   aspectRatio: 16 / 9,
-                  //   autoPlayCurve: Curves.fastOutSlowIn,
-                  //   autoPlayAnimationDuration: Duration(milliseconds: 800),
-                  //   viewportFraction: 0.8,
-                  //   // items:[ CarouselData.carouselItems]
-                  // ),
-
+                  CarouselSlider(
+                    scrollDirection: Axis.horizontal,
+                    height: 120.0.h,
+                    enlargeCenterPage: true,
+                    autoPlay: true,
+                    aspectRatio: 16 / 9,
+                    autoPlayCurve: Curves.fastOutSlowIn,
+                    autoPlayAnimationDuration: Duration(milliseconds: 800),
+                    viewportFraction: 0.8,
+                     items:Images
+                  ),
                   SizedBox(height: 30.0.h),
                   Text(
                     "Quick Access.",
